@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Histodle España</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="main-container">
+        <header>
+            <h1>HISTODLE <span class="flag">🇪🇸</span></h1>
+            <p>Historia de España y Zaragoza</p>
+        </header>
+
+        <!-- PANTALLA INICIO -->
+        <div id="home-screen" class="screen">
+            <div class="hero-section">
+                <div class="hero-icon">🏛️</div>
+                <h2>Viaja en el Tiempo</h2>
+                <p class="hero-text">Un evento histórico diferente cada día.<br>¿Podrás adivinar el año o el nombre?</p>
+            </div>
+            
+            <button class="btn-primary btn-large" onclick="showScreen('game')">JUGAR HOY</button>
+            
+            <div class="menu-buttons">
+                <button class="btn-secondary" onclick="showScreen('stats')">
+                    <span class="btn-icon">📊</span>
+                    Estadísticas
+                </button>
+                <button class="btn-secondary" onclick="showScreen('history')">
+                    <span class="btn-icon">📚</span>
+                    Historial
+                </button>
+            </div>
+            
+            <div class="info-cards">
+                <div class="info-card">
+                    <div class="info-icon">📅</div>
+                    <div class="info-title">Modo Año</div>
+                    <div class="info-desc">Adivina el año</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">✏️</div>
+                    <div class="info-title">Modo Wordle</div>
+                    <div class="info-desc">Adivina el nombre</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANTALLA JUEGO -->
+        <div id="game-screen" class="screen hidden">
+            <div class="screen-header">
+                <button class="btn-back" onclick="showScreen('home')">← Volver</button>
+                <button class="btn-icon-only" onclick="showScreen('stats')">📊</button>
+            </div>
+            
+            <div id="game-board">
+                <div class="clue-card">
+                    <div class="clue-label" id="event-date-label">EVENTO DE HOY</div>
+                    <p id="event-description">Cargando historia...</p>
+                </div>
+
+                <!-- SELECTOR DE MODO -->
+                <div class="mode-selector" style="display: none;">
+                    <button class="mode-btn active" id="mode-year-btn" onclick="switchMode('year')">
+                        📅 Adivinar Año
+                    </button>
+                    <button class="mode-btn" id="mode-name-btn" onclick="switchMode('name')">
+                        ✏️ Adivinar Nombre
+                    </button>
+                </div>
+
+                <div class="attempts-info">
+                    <span id="attempts-counter">Intentos: 0/5</span>
+                </div>
+
+                <div id="attempts-container"></div>
+
+                <!-- MODO AÑO -->
+                <div id="year-mode" class="input-area">
+                    <input type="number" id="year-input" placeholder="Año (ej. 1936)" min="0" max="2025">
+                    <button id="submit-btn" onclick="makeGuess()">ENVIAR</button>
+                </div>
+
+                <!-- MODO WORDLE -->
+                <div id="name-mode" class="hidden">
+                    <div class="wordle-hint">
+                        <span id="wordle-hint-text">Escribe las letras del evento (sin espacios)</span>
+                    </div>
+                    <div id="wordle-container"></div>
+                    <div class="wordle-input-area">
+                        <input type="text" id="name-input" placeholder="Ej: TOMAGRANADA" maxlength="30">
+                        <button id="submit-name-btn" onclick="makeWordleGuess()">Adivinar</button>
+                    </div>
+                    <div id="keyboard"></div>
+                    <div class="wordle-legend">
+                        <div class="legend-item">
+                            <span class="legend-box legend-correct"></span>
+                            <span>Correcto</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-box legend-present"></span>
+                            <span>Mal ubicada</span>
+                        </div>
+                        <div class="legend-item">
+                            <span class="legend-box legend-absent"></span>
+                            <span>No está</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="result-message" class="hidden">
+                    <p id="result-text"></p>
+                    <button class="btn-primary" onclick="showScreen('stats')">VER ESTADÍSTICAS</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PANTALLA ESTADÍSTICAS -->
+        <div id="stats-screen" class="screen hidden">
+            <div class="screen-header">
+                <button class="btn-back" onclick="showScreen('home')">← Volver</button>
+            </div>
+            
+            <h2 class="screen-title">📊 Tus Estadísticas</h2>
+            
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-value" id="stat-played">0</div>
+                    <div class="stat-label">Jugados</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="stat-wins">0</div>
+                    <div class="stat-label">Ganados</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="stat-winrate">0%</div>
+                    <div class="stat-label">% Victoria</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" id="stat-streak">0</div>
+                    <div class="stat-label">Racha</div>
+                </div>
+            </div>
+            
+            <h3 class="subsection-title">Distribución de Intentos</h3>
+            <div id="distribution-chart" class="distribution-chart"></div>
+            
+            <button class="btn-secondary btn-large" onclick="showScreen('history')">VER HISTORIAL</button>
+        </div>
+
+        <!-- PANTALLA HISTORIAL -->
+        <div id="history-screen" class="screen hidden">
+            <div class="screen-header">
+                <button class="btn-back" onclick="showScreen('home')">← Volver</button>
+            </div>
+            
+            <h2 class="screen-title">📚 Últimos 7 Días</h2>
+            <p class="history-subtitle">Haz clic en cualquier día para jugar</p>
+            
+            <div id="history-list" class="history-list">
+                <p class="empty-message">Cargando historial...</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

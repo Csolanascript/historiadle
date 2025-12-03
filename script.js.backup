@@ -1,0 +1,331 @@
+let targetEvent = null;
+let attempts = 0;
+const MAX_ATTEMPTS = 5;
+let gameOver = false;
+let currentScreen = 'home';
+let gameHistory = [];
+let stats = {
+    played: 0,
+    wins: 0,
+    currentStreak: 0,
+    maxStreak: 0,
+    distribution: [0, 0, 0, 0, 0] // intentos 1-5
+};
+
+// ============ SISTEMA DE NAVEGACIÓN ============
+function showScreen(screenName) {
+    // Ocultar todas las pantallas
+    document.querySelectorAll('.screen').forEach(s => s.classList.add('hidden'));
+    
+    // Mostrar la pantalla seleccionada
+    const screen = document.getElementById(`${screenName}-screen`);
+    if (screen) {
+        screen.classList.remove('hidden');
+        currentScreen = screenName;
+        
+        // Cargar datos según la pantalla
+        if (screenName === 'stats') {
+            renderStats();
+        } else if (screenName === 'history') {
+            renderHistory();
+        } else if (screenName === 'game') {
+            checkAndLoadGame();
+        }
+    }
+}
+
+// ============ PERSISTENCIA DE DATOS ============
+function loadData() {
+    const savedStats = localStorage.getItem('histodle-stats');
+    const savedHistory = localStorage.getItem('histodle-history');
+    
+    if (savedStats) {
+        stats = JSON.parse(savedStats);
+    }
+    if (savedHistory) {
+        gameHistory = JSON.parse(savedHistory);
+    }
+}
+
+function saveData() {
+    localStorage.setItem('histodle-stats', JSON.stringify(stats));
+    localStorage.setItem('histodle-history', JSON.stringify(gameHistory));
+}
+
+function getTodayGameState() {
+    const today = new Date().toISOString().split('T')[0];
+    const savedState = localStorage.getItem(`histodle-game-${today}`);
+    return savedState ? JSON.parse(savedState) : null;
+}
+
+function saveTodayGameState() {
+    const today = new Date().toISOString().split('T')[0];
+    const state = {
+        attempts,
+        gameOver,
+        attemptsData: Array.from(document.getElementById('attempts-container').children).map(div => div.outerHTML)
+    };
+    localStorage.setItem(`histodle-game-${today}`, JSON.stringify(state));
+}
+
+// ============ CARGAR JUEGO ============
+function checkAndLoadGame() {
+    const today = new Date().toISOString().split('T')[0];
+    const savedState = getTodayGameState();
+    
+    if (savedState && savedState.gameOver) {
+        // Ya jugó hoy
+        attempts = savedState.attempts;
+        gameOver = true;
+        
+        // Restaurar intentos
+        const container = document.getElementById('attempts-container');
+        container.innerHTML = savedState.attemptsData.join('');
+        
+        // Deshabilitar input
+        document.getElementById('year-input').disabled = true;
+        document.getElementById('submit-btn').disabled = true;
+        
+        // Mostrar resultado
+        const won = savedState.attemptsData.some(html => html.includes('correct'));
+        showGameResult(won);
+        
+    } else if (savedState) {
+        // Juego en progreso
+        attempts = savedState.attempts;
+        const container = document.getElementById('attempts-container');
+        container.innerHTML = savedState.attemptsData.join('');
+        updateAttemptsCounter();
+    }
+}
+
+// 1. Cargar datos y buscar el evento de HOY
+async function initGame() {
+    loadData(); // Cargar estadísticas al inicio
+    
+    try {
+        const response = await fetch('eventos.json');
+        const events = await response.json();
+        
+        // Formato fecha local YYYY-MM-DD
+        const today = new Date().toISOString().split('T')[0];
+        
+        // Buscar coincidencia exacta de fecha
+        targetEvent = events.find(e => e.date === today);
+
+        // FALLBACK: Si no hay evento para hoy, coge el último de la lista
+        if (!targetEvent) {
+            console.warn("No hay evento programado para hoy. Cargando el último disponible.");
+            targetEvent = events[events.length - 1];
+        }
+
+        // Renderizar pista
+        document.getElementById('event-description').innerText = targetEvent.clue;
+
+    } catch (error) {
+        console.error("Error:", error);
+        document.getElementById('event-description').innerText = "Error cargando datos. Revisa eventos.json";
+    }
+}
+
+// 2. Lógica de juego
+function makeGuess() {
+    if (gameOver || !targetEvent) return;
+
+    const input = document.getElementById('year-input');
+    const guess = parseInt(input.value);
+
+    if (!guess) return; // Validar input vacío
+
+    attempts++;
+    const diff = targetEvent.year - guess;
+    
+    renderAttempt(guess, diff);
+    updateAttemptsCounter();
+    input.value = ""; // Limpiar input
+    
+    saveTodayGameState(); // Guardar progreso
+
+    // Condiciones de victoria/derrota
+    if (diff === 0) {
+        endGame(true);
+    } else if (attempts >= MAX_ATTEMPTS) {
+        endGame(false);
+    }
+}
+
+function updateAttemptsCounter() {
+    const counter = document.getElementById('attempts-counter');
+    if (counter) {
+        counter.innerText = `Intentos: ${attempts}/${MAX_ATTEMPTS}`;
+    }
+}
+
+// 3. Renderizar el intento con colores y flechas
+function renderAttempt(guess, diff) {
+    const container = document.getElementById('attempts-container');
+    const div = document.createElement('div');
+    div.className = 'attempt-row';
+
+    let icon = "";
+    let className = "";
+
+    // Lógica de colores y flechas
+    if (diff === 0) {
+        className = "correct";
+        icon = "🎉";
+    } else {
+        // Flechas
+        const direction = diff > 0 ? "⬆️ (Más tarde)" : "⬇️ (Más pronto)";
+        
+        // Color amarillo si está cerca (menos de 50 años de diferencia)
+        if (Math.abs(diff) <= 50) {
+            className = "close";
+            icon = `⚠️ ${direction}`;
+        } else {
+            className = "wrong"; // Gris
+            icon = `❌ ${direction}`;
+        }
+    }
+
+    div.classList.add(className);
+    div.innerHTML = `
+        <span>${guess}</span>
+        <span>${icon}</span>
+    `;
+    
+    container.appendChild(div);
+}
+
+function endGame(win) {
+    gameOver = true;
+    const input = document.getElementById('year-input');
+    const btn = document.getElementById('submit-btn');
+
+    input.disabled = true;
+    btn.disabled = true;
+    
+    // Actualizar estadísticas
+    stats.played++;
+    if (win) {
+        stats.wins++;
+        stats.currentStreak++;
+        stats.maxStreak = Math.max(stats.maxStreak, stats.currentStreak);
+        stats.distribution[attempts - 1]++;
+    } else {
+        stats.currentStreak = 0;
+    }
+    
+    // Guardar en historial
+    const today = new Date().toISOString().split('T')[0];
+    gameHistory.unshift({
+        date: today,
+        event: targetEvent.event,
+        year: targetEvent.year,
+        attempts: win ? attempts : 0,
+        won: win
+    });
+    
+    // Mantener solo últimos 5
+    if (gameHistory.length > 5) {
+        gameHistory = gameHistory.slice(0, 5);
+    }
+    
+    saveData();
+    saveTodayGameState();
+    
+    showGameResult(win);
+}
+
+function showGameResult(win) {
+    const msgDiv = document.getElementById('result-message');
+    const textDiv = document.getElementById('result-text');
+    
+    msgDiv.classList.remove('hidden');
+    
+    if (win) {
+        msgDiv.style.backgroundColor = "var(--correct)";
+        textDiv.innerText = `🎉 ¡CORRECTO! El año era ${targetEvent.year}.\n${targetEvent.event}`;
+    } else {
+        msgDiv.style.backgroundColor = "#d32f2f";
+        textDiv.innerText = `El año era: ${targetEvent.year}\n${targetEvent.event}`;
+    }
+}
+
+// ============ PANTALLA DE ESTADÍSTICAS ============
+function renderStats() {
+    document.getElementById('stat-played').innerText = stats.played;
+    document.getElementById('stat-wins').innerText = stats.wins;
+    
+    const winRate = stats.played > 0 ? Math.round((stats.wins / stats.played) * 100) : 0;
+    document.getElementById('stat-winrate').innerText = `${winRate}%`;
+    document.getElementById('stat-streak').innerText = stats.currentStreak;
+    
+    // Gráfico de distribución
+    const chart = document.getElementById('distribution-chart');
+    chart.innerHTML = '';
+    
+    const maxValue = Math.max(...stats.distribution, 1);
+    
+    for (let i = 0; i < 5; i++) {
+        const value = stats.distribution[i];
+        const percentage = (value / maxValue) * 100;
+        
+        const bar = document.createElement('div');
+        bar.className = 'bar-row';
+        bar.innerHTML = `
+            <span class="bar-label">${i + 1}</span>
+            <div class="bar-container">
+                <div class="bar-fill" style="width: ${percentage}%"></div>
+                <span class="bar-value">${value}</span>
+            </div>
+        `;
+        chart.appendChild(bar);
+    }
+}
+
+// ============ PANTALLA DE HISTORIAL ============
+function renderHistory() {
+    const list = document.getElementById('history-list');
+    
+    if (gameHistory.length === 0) {
+        list.innerHTML = '<p class="empty-message">Aún no has jugado ninguna partida</p>';
+        return;
+    }
+    
+    list.innerHTML = '';
+    
+    gameHistory.forEach(game => {
+        const item = document.createElement('div');
+        item.className = `history-item ${game.won ? 'won' : 'lost'}`;
+        
+        const dateObj = new Date(game.date + 'T12:00:00');
+        const dateStr = dateObj.toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' });
+        
+        item.innerHTML = `
+            <div class="history-header">
+                <span class="history-date">${dateStr}</span>
+                <span class="history-badge ${game.won ? 'badge-win' : 'badge-lose'}">
+                    ${game.won ? '✓ Victoria' : '✗ Derrota'}
+                </span>
+            </div>
+            <div class="history-event">${game.event}</div>
+            <div class="history-details">
+                <span class="history-year">📅 ${game.year}</span>
+                <span class="history-attempts">${game.won ? `🎯 ${game.attempts} intentos` : '❌ Sin acertar'}</span>
+            </div>
+        `;
+        
+        list.appendChild(item);
+    });
+}
+
+// Permitir Enter para enviar
+document.getElementById('year-input').addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+        makeGuess();
+    }
+});
+
+// Arrancar
+initGame();

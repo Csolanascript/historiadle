@@ -1,0 +1,13 @@
+# Redirigir accesos directos a archivos sensibles
+
+# Bloquear acceso directo a eventos.json
+/eventos.json  /  403
+
+# Bloquear archivos de backup
+/*.backup  /  403
+
+# Bloquear archivos Python
+/*.py  /  403
+
+# Si alguien intenta acceder a .git
+/.git/*  /  403

@@ -1,0 +1,44 @@
+# Headers de seguridad para Cloudflare Pages
+
+# Aplicar a todas las páginas
+/*
+  # Prevenir clickjacking
+  X-Frame-Options: DENY
+  
+  # Prevenir XSS
+  X-Content-Type-Options: nosniff
+  
+  # Política de seguridad de contenido
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self' data:; connect-src 'self'; frame-ancestors 'none';
+  
+  # Política de referencia (no compartir URLs al salir)
+  Referrer-Policy: strict-origin-when-cross-origin
+  
+  # Forzar HTTPS (HSTS)
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  
+  # Prevenir que navegadores adivinen el tipo MIME
+  X-XSS-Protection: 1; mode=block
+  
+  # Permisos del navegador
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=()
+
+# Bloquear acceso directo a archivos sensibles
+/eventos.json
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: private, no-cache, no-store, must-revalidate
+
+/*.backup
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store
+
+/server.py
+  X-Robots-Tag: noindex, nofollow
+  Cache-Control: no-store
+
+# Cachear archivos estáticos con seguridad
+/style.css
+  Cache-Control: public, max-age=86400
+  
+/script.js
+  Cache-Control: public, max-age=86400

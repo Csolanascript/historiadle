@@ -1,5 +1,13 @@
 User-agent: *
 Allow: /
+Disallow: /eventos.json
+Disallow: /*.backup
+Disallow: /server.py
+Disallow: /.git/
+
+# Prevenir hotlinking de recursos
+User-agent: *
+Disallow: /script.js.backup
 
 # Sitemap
 Sitemap: https://hispandle.pages.dev/sitemap.xml

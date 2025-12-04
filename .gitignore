@@ -11,3 +11,15 @@ build/
 .DS_Store
 .vscode/
 .idea/
+
+# Archivos de backup y configuración
+*.backup
+*.bak
+*.tmp
+*.log
+.env
+.env.local
+
+# Archivos sensibles
+server.py
+*.py

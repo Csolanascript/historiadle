@@ -1,3 +1,35 @@
+// ============ PROTECCIÓN CONTRA MANIPULACIÓN ============
+(function() {
+    'use strict';
+    
+    // Detectar DevTools abierto (dificulta el hacer trampa)
+    const devtools = {
+        isOpen: false,
+        orientation: null
+    };
+    
+    const threshold = 160;
+    const check = () => {
+        if (window.outerWidth - window.innerWidth > threshold || 
+            window.outerHeight - window.innerHeight > threshold) {
+            if (!devtools.isOpen) {
+                devtools.isOpen = true;
+                console.clear();
+            }
+        } else {
+            devtools.isOpen = false;
+        }
+    };
+    
+    setInterval(check, 1000);
+    
+    // Deshabilitar click derecho en producción
+    if (location.hostname !== 'localhost' && location.hostname !== '127.0.0.1') {
+        document.addEventListener('contextmenu', e => e.preventDefault());
+    }
+})();
+
+// ============ VARIABLES GLOBALES ============
 let targetEvent = null;
 let allEvents = [];
 let attempts = 0;
@@ -162,8 +194,23 @@ async function initGame() {
     loadData();
     
     try {
-        const response = await fetch('eventos.json');
+        const response = await fetch('eventos.json', {
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            },
+            cache: 'no-cache'
+        });
+        
+        if (!response.ok) {
+            throw new Error('No se pudo cargar el juego');
+        }
+        
         allEvents = await response.json();
+        
+        // Validar integridad de datos
+        if (!Array.isArray(allEvents) || allEvents.length === 0) {
+            throw new Error('Datos inválidos');
+        }
         
         const today = new Date().toISOString().split('T')[0];
         currentDate = today;

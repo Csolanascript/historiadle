@@ -7,7 +7,7 @@
     
     <!-- Página principal -->
     <url>
-        <loc>https://hispandle.pages.dev/</loc>
+        <loc>https://hispandle.es/</loc>
         <lastmod>2025-12-06</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -15,7 +15,7 @@
     
     <!-- Juego del día -->
     <url>
-        <loc>https://hispandle.pages.dev/#game</loc>
+        <loc>https://hispandle.es/#game</loc>
         <lastmod>2025-12-06</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.9</priority>
@@ -23,7 +23,7 @@
     
     <!-- Estadísticas -->
     <url>
-        <loc>https://hispandle.pages.dev/#stats</loc>
+        <loc>https://hispandle.es/#stats</loc>
         <lastmod>2025-12-06</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
@@ -31,7 +31,7 @@
     
     <!-- Historial / Archivo -->
     <url>
-        <loc>https://hispandle.pages.dev/#history</loc>
+        <loc>https://hispandle.es/#history</loc>
         <lastmod>2025-12-06</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
@@ -39,7 +39,7 @@
     
     <!-- Página de Archivo Histórico Completo -->
     <url>
-        <loc>https://hispandle.pages.dev/archivo.html</loc>
+        <loc>https://hispandle.es/archivo.html</loc>
         <lastmod>2025-12-06</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>

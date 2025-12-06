@@ -15,4 +15,4 @@ Disallow: /*.backup$
 Disallow: /script.js.backup
 
 # Sitemap
-Sitemap: https://hispandle.pages.dev/sitemap.xml
+Sitemap: https://hispandle.es/sitemap.xml

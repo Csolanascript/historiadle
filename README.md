@@ -2,7 +2,7 @@
 
 Un juego diario al estilo Wordle donde debes adivinar el año de eventos históricos importantes de España y Zaragoza.
 
-🌐 **URL en vivo**: https://hispandle.pages.dev
+🌐 **URL en vivo**: https://hispandle.es
 
 ## 🎮 Características
 

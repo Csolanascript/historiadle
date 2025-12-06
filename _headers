@@ -27,6 +27,7 @@
 /eventos.json
   X-Robots-Tag: noindex, nofollow
   Cache-Control: private, no-cache, no-store, must-revalidate
+  Access-Control-Allow-Origin: https://hispandle.es
 
 /*.backup
   X-Robots-Tag: noindex, nofollow

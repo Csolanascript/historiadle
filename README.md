@@ -1,6 +1,8 @@
-# Histodle - Juego de Historia de España y Zaragoza
+# Hispandle - Wordle de Historia de España y Zaragoza
 
 Un juego diario al estilo Wordle donde debes adivinar el año de eventos históricos importantes de España y Zaragoza.
+
+🌐 **URL en vivo**: https://hispandle.pages.dev
 
 ## 🎮 Características
 

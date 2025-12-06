@@ -37,7 +37,8 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     min-height: 100vh;
     overflow-x: hidden;
     transition: background 0.3s ease, color 0.3s ease;
@@ -1235,9 +1236,11 @@ button:disabled {
     max-width: 500px;
     text-align: center;
     padding: 30px 20px 20px 20px;
-    margin-top: 40px;
+    margin-top: auto;
     border-top: 1px solid var(--border);
     opacity: 0.8;
+    position: relative;
+    z-index: 1;
 }
 
 .footer-text {

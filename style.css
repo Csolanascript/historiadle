@@ -36,9 +36,6 @@ body {
     color: var(--text-color);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     min-height: 100vh;
     overflow-x: hidden;
     transition: background 0.3s ease, color 0.3s ease;
@@ -59,6 +56,14 @@ body::before {
     z-index: 0;
 }
 
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+}
+
 .main-container {
     width: 100%;
     max-width: 500px;
@@ -69,6 +74,7 @@ body::before {
     animation: fadeIn 0.5s ease;
     position: relative;
     z-index: 1;
+    flex: 1;
 }
 
 header {

@@ -74,7 +74,8 @@
     </script>
 </head>
 <body>
-    <div class="main-container">
+    <div class="page-wrapper">
+        <div class="main-container">
         <header>
             <h1>HISPANDLE <span class="flag">🇪🇸</span></h1>
             <h2 class="seo-subtitle">El archivo histórico de Wordle en España</h2>
@@ -192,14 +193,14 @@
                 <p class="empty-message">Cargando historial...</p>
             </div>
         </div>
-    </div>
-    
-    <!-- Botón de modo claro/oscuro -->
-    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar tema">
-        <span class="theme-icon">🌙</span>
-    </button>
-    
-    <footer class="site-footer">
+        </div>
+        
+        <!-- Botón de modo claro/oscuro -->
+        <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar tema">
+            <span class="theme-icon">🌙</span>
+        </button>
+        
+        <footer class="site-footer">
         <p class="footer-text">🏛️ Desarrollado en Zaragoza, Aragón</p>
         <p class="footer-subtext">El primer archivo completo de Wordle histórico en español</p>
         
@@ -215,7 +216,8 @@
         </div>
         
         <p class="footer-copyright">© 2025 Hispandle | Juego educativo de historia española | Creado por <a href="https://www.linkedin.com/in/carlos-solana-melero-153b39262/" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none;">Carlos Solana</a></p>
-    </footer>
+        </footer>
+    </div>
     
     <script src="script.js"></script>
 </body>

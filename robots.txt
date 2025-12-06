@@ -1,12 +1,17 @@
 User-agent: *
 Allow: /
-Disallow: /eventos.json
-Disallow: /*.backup
-Disallow: /server.py
-Disallow: /.git/
+Allow: /index.html
+Allow: /style.css
+Allow: /script.js
+Allow: /eventos.json
 
-# Prevenir hotlinking de recursos
-User-agent: *
+# Bloquear archivos sensibles y de desarrollo
+Disallow: /server.py
+Disallow: /*.py$
+Disallow: /.git/
+Disallow: /README.md
+Disallow: /wrangler.toml
+Disallow: /*.backup$
 Disallow: /script.js.backup
 
 # Sitemap

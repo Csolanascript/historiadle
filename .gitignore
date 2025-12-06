@@ -23,3 +23,11 @@ build/
 # Archivos sensibles
 server.py
 *.py
+
+# Archivos de servidor y desarrollo
+server.py
+*.py
+__pycache__/
+*.pyc
+.vscode/
+.idea/

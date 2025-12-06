@@ -37,7 +37,6 @@ const MAX_ATTEMPTS = 5;
 let gameOver = false;
 let currentScreen = 'home';
 let gameHistory = [];
-let gameMode = 'year'; // 'year' o 'name'
 let currentDate = null; // Para juegos del historial
 let stats = {
     played: 0,
@@ -69,53 +68,16 @@ function showScreen(screenName) {
     }
 }
 
-// ============ CAMBIO DE MODO ============
-function switchMode(mode) {
-    if (gameOver) return; // No cambiar modo si ya terminó
-    
-    gameMode = mode;
-    
-    // Actualizar botones
-    document.getElementById('mode-year-btn').classList.toggle('active', mode === 'year');
-    document.getElementById('mode-name-btn').classList.toggle('active', mode === 'name');
-    
-    // Mostrar/ocultar inputs
-    document.getElementById('year-mode').classList.toggle('hidden', mode !== 'year');
-    document.getElementById('name-mode').classList.toggle('hidden', mode !== 'name');
-    
-    // Inicializar tablero Wordle si cambia a modo nombre
-    if (mode === 'name' && targetEvent) {
-        initWordleBoard();
-    }
-    
-    // Resetear juego si cambia de modo
-    if (attempts > 0) {
-        if (confirm('¿Quieres cambiar de modo? Se reiniciará el juego.')) {
-            resetGame();
-        } else {
-            // Volver al modo anterior
-            gameMode = mode === 'year' ? 'name' : 'year';
-            switchMode(gameMode);
-        }
-    }
-}
-
+// ============ RESETEAR JUEGO ============
 function resetGame() {
     attempts = 0;
     gameOver = false;
     document.getElementById('attempts-container').innerHTML = '';
-    if (gameMode === 'name' && targetEvent) {
-        initWordleBoard();
-    }
     document.getElementById('year-input').value = '';
-    document.getElementById('name-input').value = '';
     document.getElementById('year-input').disabled = false;
-    document.getElementById('name-input').disabled = false;
     document.getElementById('submit-btn').disabled = false;
-    document.getElementById('submit-name-btn').disabled = false;
     document.getElementById('result-message').classList.add('hidden');
     updateAttemptsCounter();
-    resetKeyboard();
 }
 
 // ============ PERSISTENCIA DE DATOS ============
@@ -139,8 +101,7 @@ function saveGameState(date) {
     const state = {
         attempts,
         gameOver,
-        mode: gameMode,
-        attemptsData: Array.from(document.getElementById(gameMode === 'year' ? 'attempts-container' : 'wordle-container').children).map(div => div.outerHTML)
+        attemptsData: Array.from(document.getElementById('attempts-container').children).map(div => div.outerHTML)
     };
     localStorage.setItem(`histodle-game-${date}`, JSON.stringify(state));
 }
@@ -169,22 +130,15 @@ async function loadGameForDate(date) {
         // Cargar juego terminado
         attempts = savedState.attempts;
         gameOver = true;
-        gameMode = savedState.mode;
         
-        switchMode(gameMode);
-        
-        const container = document.getElementById(gameMode === 'year' ? 'attempts-container' : 'wordle-container');
+        const container = document.getElementById('attempts-container');
         container.innerHTML = savedState.attemptsData.join('');
         
         document.getElementById('year-input').disabled = true;
-        document.getElementById('name-input').disabled = true;
         document.getElementById('submit-btn').disabled = true;
-        document.getElementById('submit-name-btn').disabled = true;
         
-        const won = savedState.attemptsData.some(html => html.includes('correct') || html.includes('wordle-correct'));
+        const won = savedState.attemptsData.some(html => html.includes('correct'));
         showGameResult(won);
-    } else if (gameMode === 'name') {
-        initWordleBoard();
     }
     
     updateAttemptsCounter();
@@ -221,8 +175,6 @@ async function initGame() {
         }
         
         document.getElementById('event-description').innerText = targetEvent.clue;
-        
-        createKeyboard();
     } catch (error) {
         console.error("Error:", error);
         document.getElementById('event-description').innerText = "Error cargando datos";
@@ -231,7 +183,7 @@ async function initGame() {
 
 // ============ MODO AÑO ============
 function makeGuess() {
-    if (gameOver || !targetEvent || gameMode !== 'year') return;
+    if (gameOver || !targetEvent) return;
 
     const input = document.getElementById('year-input');
     const guess = parseInt(input.value);
@@ -293,196 +245,13 @@ function updateAttemptsCounter() {
     }
 }
 
-// ============ MODO WORDLE ============
-function initWordleBoard() {
-    const container = document.getElementById('wordle-container');
-    container.innerHTML = '';
-    
-    // Crear filas vacías para los intentos
-    for (let i = 0; i < MAX_ATTEMPTS; i++) {
-        const row = document.createElement('div');
-        row.className = 'wordle-row';
-        row.id = `wordle-attempt-${i}`;
-        
-        const targetWords = targetEvent.event.split(' ');
-        targetWords.forEach((word, wordIdx) => {
-            for (let j = 0; j < word.length; j++) {
-                const box = document.createElement('span');
-                box.className = 'wordle-letter wordle-empty';
-                row.appendChild(box);
-            }
-            
-            if (wordIdx < targetWords.length - 1) {
-                const separator = document.createElement('span');
-                separator.className = 'wordle-separator';
-                row.appendChild(separator);
-            }
-        });
-        
-        container.appendChild(row);
-    }
-}
 
-function makeWordleGuess() {
-    if (gameOver || !targetEvent || gameMode !== 'name') return;
-
-    const input = document.getElementById('name-input');
-    let guess = input.value.toUpperCase().trim().replace(/\s+/g, '');
-
-    if (guess.length === 0) return;
-
-    attempts++;
-    
-    renderWordleAttempt(guess, attempts - 1);
-    updateAttemptsCounter();
-    input.value = "";
-    
-    saveGameState(currentDate);
-
-    const targetClean = targetEvent.event.replace(/\s+/g, '');
-    if (guess === targetClean) {
-        endGame(true);
-    } else if (attempts >= MAX_ATTEMPTS) {
-        endGame(false);
-    }
-}
-
-function renderWordleAttempt(guess, attemptNum) {
-    const row = document.getElementById(`wordle-attempt-${attemptNum}`);
-    if (!row) return;
-    
-    row.classList.add('used');
-    
-    const target = targetEvent.event.replace(/\s+/g, '');
-    const targetWords = targetEvent.event.split(' ');
-    const guessLetters = guess.split('');
-    const targetLetters = target.split('');
-    const usedTargetIndices = [];
-    const letterStates = [];
-
-    // Primera pasada: identificar letras correctas (verdes)
-    let letterIndex = 0;
-    targetWords.forEach((word) => {
-        for (let i = 0; i < word.length; i++) {
-            const guessLetter = guessLetters[letterIndex] || '';
-            const targetLetter = targetLetters[letterIndex];
-            
-            if (guessLetter === targetLetter) {
-                letterStates.push({ letter: guessLetter, state: 'correct', index: letterIndex });
-                usedTargetIndices.push(letterIndex);
-                updateKeyboard(guessLetter, 'correct');
-            } else {
-                letterStates.push({ letter: guessLetter, state: 'pending', index: letterIndex });
-            }
-            letterIndex++;
-        }
-    });
-
-    // Segunda pasada: identificar letras presentes (amarillas)
-    letterStates.forEach((state, idx) => {
-        if (state.state === 'pending' && state.letter) {
-            let found = false;
-            for (let j = 0; j < targetLetters.length; j++) {
-                if (!usedTargetIndices.includes(j) && targetLetters[j] === state.letter) {
-                    state.state = 'present';
-                    usedTargetIndices.push(j);
-                    found = true;
-                    updateKeyboard(state.letter, 'present');
-                    break;
-                }
-            }
-            if (!found) {
-                state.state = 'absent';
-                updateKeyboard(state.letter, 'absent');
-            }
-        }
-    });
-
-    // Aplicar estados a las casillas
-    const boxes = row.querySelectorAll('.wordle-letter');
-    let boxIndex = 0;
-    
-    letterStates.forEach((state, idx) => {
-        if (boxes[boxIndex]) {
-            boxes[boxIndex].textContent = state.letter || '';
-            boxes[boxIndex].classList.remove('wordle-empty', 'wordle-pending');
-            boxes[boxIndex].classList.add(`wordle-${state.state}`);
-            boxIndex++;
-        }
-    });
-    
-    // Marcar siguiente fila como activa
-    const nextRow = document.getElementById(`wordle-attempt-${attemptNum + 1}`);
-    if (nextRow) {
-        setTimeout(() => {
-            nextRow.style.opacity = '1';
-            nextRow.style.animation = 'pulse 1s ease-in-out infinite';
-        }, 500);
-    }
-}
-
-// ============ TECLADO VIRTUAL ============
-function createKeyboard() {
-    const keyboard = document.getElementById('keyboard');
-    const rows = [
-        ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
-        ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Ñ'],
-        ['Z', 'X', 'C', 'V', 'B', 'N', 'M', '⌫']
-    ];
-
-    keyboard.innerHTML = '';
-    rows.forEach(row => {
-        const rowDiv = document.createElement('div');
-        rowDiv.className = 'keyboard-row';
-        
-        row.forEach(key => {
-            const keyBtn = document.createElement('button');
-            keyBtn.className = 'keyboard-key';
-            keyBtn.textContent = key;
-            keyBtn.dataset.key = key;
-            keyBtn.onclick = () => handleKeyPress(key);
-            rowDiv.appendChild(keyBtn);
-        });
-        
-        keyboard.appendChild(rowDiv);
-    });
-}
-
-function handleKeyPress(key) {
-    if (gameOver || gameMode !== 'name') return;
-    
-    const input = document.getElementById('name-input');
-    
-    if (key === '⌫') {
-        input.value = input.value.slice(0, -1);
-    } else if (input.value.length < 20) {
-        input.value += key;
-    }
-    
-    input.focus();
-}
-
-function updateKeyboard(letter, state) {
-    const key = document.querySelector(`[data-key="${letter}"]`);
-    if (key) {
-        key.classList.remove('key-correct', 'key-present', 'key-absent');
-        key.classList.add(`key-${state}`);
-    }
-}
-
-function resetKeyboard() {
-    document.querySelectorAll('.keyboard-key').forEach(key => {
-        key.classList.remove('key-correct', 'key-present', 'key-absent');
-    });
-}
 
 // ============ FIN DE JUEGO ============
 function endGame(win) {
     gameOver = true;
     document.getElementById('year-input').disabled = true;
-    document.getElementById('name-input').disabled = true;
     document.getElementById('submit-btn').disabled = true;
-    document.getElementById('submit-name-btn').disabled = true;
     
     // Solo actualizar estadísticas si es el juego de hoy
     const today = new Date().toISOString().split('T')[0];
@@ -572,7 +341,7 @@ function renderHistory() {
         item.className = 'history-item clickeable';
         
         if (savedState && savedState.gameOver) {
-            const won = savedState.attemptsData.some(html => html.includes('correct') || html.includes('wordle-correct'));
+            const won = savedState.attemptsData.some(html => html.includes('correct'));
             item.classList.add(won ? 'won' : 'lost');
         } else if (!isToday) {
             item.classList.add('unplayed');
@@ -583,7 +352,7 @@ function renderHistory() {
         
         let statusBadge = '';
         if (savedState && savedState.gameOver) {
-            const won = savedState.attemptsData.some(html => html.includes('correct') || html.includes('wordle-correct'));
+            const won = savedState.attemptsData.some(html => html.includes('correct'));
             statusBadge = `<span class="history-badge ${won ? 'badge-win' : 'badge-lose'}">
                 ${won ? '✓ Completado' : '✗ Fallado'}
             </span>`;
@@ -617,18 +386,52 @@ function renderHistory() {
 }
 
 // Permitir Enter
-document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('year-input').addEventListener("keypress", function(event) {
-        if (event.key === "Enter") {
-            makeGuess();
-        }
-    });
+// Función para cambiar entre modo claro y oscuro
+function toggleTheme() {
+    const html = document.documentElement;
+    const currentTheme = html.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
     
-    document.getElementById('name-input').addEventListener("keypress", function(event) {
-        if (event.key === "Enter") {
-            makeWordleGuess();
-        }
-    });
+    html.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    
+    // Actualizar el icono
+    const themeIcon = document.querySelector('.theme-icon');
+    if (themeIcon) {
+        themeIcon.textContent = newTheme === 'light' ? '☀️' : '🌙';
+    }
+}
+
+// Cargar el tema guardado al iniciar
+function loadTheme() {
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    
+    const themeIcon = document.querySelector('.theme-icon');
+    if (themeIcon) {
+        themeIcon.textContent = savedTheme === 'light' ? '☀️' : '🌙';
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    // Cargar tema guardado
+    loadTheme();
+    
+    // Event listener para el input del año
+    const yearInput = document.getElementById('year-input');
+    if (yearInput) {
+        yearInput.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                makeGuess();
+            }
+        });
+    }
+    
+    // Event listener para el toggle de tema
+    const themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', toggleTheme);
+    }
 });
 
 // Arrancar

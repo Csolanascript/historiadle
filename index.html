@@ -35,6 +35,43 @@
       }
     }
     </script>
+    
+    <!-- FAQ Schema para Rich Snippets en Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [{
+        "@type": "Question",
+        "name": "¿Cuál es el evento histórico de Wordle de hoy en España?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "El evento se actualiza cada día a las 00:00. Puedes jugar el reto diario y adivinar el año de eventos históricos importantes de España y Zaragoza en Hispandle.es."
+        }
+      }, {
+        "@type": "Question",
+        "name": "¿Cómo jugar a eventos históricos anteriores?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "En Hispandle tienes acceso gratuito al historial de los últimos 7 días. Haz clic en el botón Historial y selecciona cualquier día anterior para jugar."
+        }
+      }, {
+        "@type": "Question",
+        "name": "¿Qué tipo de eventos históricos incluye Hispandle?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Hispandle incluye eventos importantes de la historia de España y Zaragoza: desde la época romana hasta eventos contemporáneos. Guerras, batallas, reconquista, constituciones, y acontecimientos culturales de Aragón."
+        }
+      }, {
+        "@type": "Question",
+        "name": "¿Hispandle es gratis?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí, Hispandle es completamente gratuito. No requiere registro ni suscripción. Puedes jugar todos los días y ver tus estadísticas guardadas en tu navegador."
+        }
+      }]
+    }
+    </script>
 </head>
 <body>
     <div class="main-container">
@@ -70,17 +107,10 @@
                 Ver Archivo Completo
             </a>
             
-            <div class="info-cards">
-                <div class="info-card">
-                    <div class="info-icon">📅</div>
-                    <div class="info-title">Modo Año</div>
-                    <div class="info-desc">Adivina el año</div>
-                </div>
-                <div class="info-card">
-                    <div class="info-icon">✏️</div>
-                    <div class="info-title">Modo Wordle</div>
-                    <div class="info-desc">Adivina el nombre</div>
-                </div>
+            <div class="info-card-single">
+                <div class="info-icon">🎯</div>
+                <div class="info-title">Adivina el Año</div>
+                <div class="info-desc">Tienes 5 intentos para descubrir en qué año ocurrió el evento histórico</div>
             </div>
         </div>
 
@@ -97,16 +127,6 @@
                     <p id="event-description">Cargando historia...</p>
                 </div>
 
-                <!-- SELECTOR DE MODO -->
-                <div class="mode-selector" style="display: none;">
-                    <button class="mode-btn active" id="mode-year-btn" onclick="switchMode('year')">
-                        📅 Adivinar Año
-                    </button>
-                    <button class="mode-btn" id="mode-name-btn" onclick="switchMode('name')">
-                        ✏️ Adivinar Nombre
-                    </button>
-                </div>
-
                 <div class="attempts-info">
                     <span id="attempts-counter">Intentos: 0/5</span>
                 </div>
@@ -117,33 +137,6 @@
                 <div id="year-mode" class="input-area">
                     <input type="number" id="year-input" placeholder="Año (ej. 1936)" min="0" max="2025">
                     <button id="submit-btn" onclick="makeGuess()">ENVIAR</button>
-                </div>
-
-                <!-- MODO WORDLE -->
-                <div id="name-mode" class="hidden">
-                    <div class="wordle-hint">
-                        <span id="wordle-hint-text">Escribe las letras del evento (sin espacios)</span>
-                    </div>
-                    <div id="wordle-container"></div>
-                    <div class="wordle-input-area">
-                        <input type="text" id="name-input" placeholder="Ej: TOMAGRANADA" maxlength="30">
-                        <button id="submit-name-btn" onclick="makeWordleGuess()">Adivinar</button>
-                    </div>
-                    <div id="keyboard"></div>
-                    <div class="wordle-legend">
-                        <div class="legend-item">
-                            <span class="legend-box legend-correct"></span>
-                            <span>Correcto</span>
-                        </div>
-                        <div class="legend-item">
-                            <span class="legend-box legend-present"></span>
-                            <span>Mal ubicada</span>
-                        </div>
-                        <div class="legend-item">
-                            <span class="legend-box legend-absent"></span>
-                            <span>No está</span>
-                        </div>
-                    </div>
                 </div>
                 
                 <div id="result-message" class="hidden">
@@ -201,10 +194,27 @@
         </div>
     </div>
     
+    <!-- Botón de modo claro/oscuro -->
+    <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar tema">
+        <span class="theme-icon">🌙</span>
+    </button>
+    
     <footer class="site-footer">
         <p class="footer-text">🏛️ Desarrollado en Zaragoza, Aragón</p>
         <p class="footer-subtext">El primer archivo completo de Wordle histórico en español</p>
-        <p class="footer-copyright">© 2025 Hispandle | Juego educativo de historia española</p>
+        
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/carlos-solana-melero-153b39262/" target="_blank" rel="noopener noreferrer" class="social-link linkedin">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                LinkedIn
+            </a>
+            <a href="https://www.instagram.com/carlos_solanaa/" target="_blank" rel="noopener noreferrer" class="social-link instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                Instagram
+            </a>
+        </div>
+        
+        <p class="footer-copyright">© 2025 Hispandle | Juego educativo de historia española | Creado por <a href="https://www.linkedin.com/in/carlos-solana-melero-153b39262/" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none;">Carlos Solana</a></p>
     </footer>
     
     <script src="script.js"></script>

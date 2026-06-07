@@ -7,8 +7,14 @@
     <meta name="description" content="Descubre la evolución de Wordle en España. Consulta el archivo histórico por años, juega palabras pasadas y retas a amigos en Aragón y Zaragoza. Juego diario de historia española.">
     <meta name="keywords" content="wordle español, wordle españa, wordle zaragoza, wordle aragón, juego historia españa, wordle histórico, archivo wordle">
     <link rel="canonical" href="https://hispandle.es/">
+
+    <!-- Tipografía editorial -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
-    
+
     <!-- Datos Estructurados para SEO -->
     <script type="application/ld+json">
     {
@@ -19,23 +25,12 @@
       "applicationCategory": "GameApplication",
       "operatingSystem": "Web",
       "description": "Juega al Wordle histórico en España. Archivo completo de eventos históricos y retos diarios sobre la historia de España y Zaragoza.",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "EUR"
-      },
-      "contentLocation": {
-        "@type": "Place",
-        "name": "Zaragoza, España"
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "ratingCount": "1250"
-      }
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+      "contentLocation": { "@type": "Place", "name": "Zaragoza, España" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.8", "ratingCount": "1250" }
     }
     </script>
-    
+
     <!-- FAQ Schema para Rich Snippets en Google -->
     <script type="application/ld+json">
     {
@@ -44,181 +39,183 @@
       "mainEntity": [{
         "@type": "Question",
         "name": "¿Cuál es el evento histórico de Wordle de hoy en España?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "El evento se actualiza cada día a las 00:00. Puedes jugar el reto diario y adivinar el año de eventos históricos importantes de España y Zaragoza en Hispandle.es."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "El evento se actualiza cada día a las 00:00. Puedes jugar el reto diario y adivinar el año de eventos históricos importantes de España y Zaragoza en Hispandle.es." }
       }, {
         "@type": "Question",
         "name": "¿Cómo jugar a eventos históricos anteriores?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "En Hispandle tienes acceso gratuito al historial de los últimos 7 días. Haz clic en el botón Historial y selecciona cualquier día anterior para jugar."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "En Hispandle tienes acceso gratuito al historial de los últimos 7 días. Haz clic en el botón Historial y selecciona cualquier día anterior para jugar." }
       }, {
         "@type": "Question",
         "name": "¿Qué tipo de eventos históricos incluye Hispandle?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Hispandle incluye eventos importantes de la historia de España y Zaragoza: desde la época romana hasta eventos contemporáneos. Guerras, batallas, reconquista, constituciones, y acontecimientos culturales de Aragón."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "Hispandle incluye eventos importantes de la historia de España y Zaragoza: desde la época romana hasta eventos contemporáneos. Guerras, batallas, reconquista, constituciones, y acontecimientos culturales de Aragón." }
       }, {
         "@type": "Question",
         "name": "¿Hispandle es gratis?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sí, Hispandle es completamente gratuito. No requiere registro ni suscripción. Puedes jugar todos los días y ver tus estadísticas guardadas en tu navegador."
-        }
+        "acceptedAnswer": { "@type": "Answer", "text": "Sí, Hispandle es completamente gratuito. No requiere registro ni suscripción. Puedes jugar todos los días y ver tus estadísticas guardadas en tu navegador." }
       }]
     }
     </script>
 </head>
 <body>
     <div class="page-wrapper">
-        <div class="main-container">
-        <header>
-            <h1>HISPANDLE <span class="flag">🇪🇸</span></h1>
-            <h2 class="seo-subtitle">El archivo histórico de Wordle en España</h2>
-            <p>Historia de España y Zaragoza</p>
+
+        <!-- ============ BARRA SUPERIOR ============ -->
+        <header class="app-bar">
+            <a class="brand" href="index.html" aria-label="Hispandle, inicio">
+                <span class="brand-mark">H</span>
+                <span class="brand-text">
+                    <span class="brand-name">HISPANDLE</span>
+                    <span class="brand-sub">ADIVINA · LA · HISTORIA</span>
+                </span>
+            </a>
+            <nav class="app-nav">
+                <a href="archivo.html" class="pill pill-link">ARCHIVO</a>
+                <button id="theme-toggle" class="pill theme-toggle" onclick="toggleTheme()" aria-label="Cambiar tema">
+                    <span class="theme-icon">☀</span><span class="theme-label">CLARO</span>
+                </button>
+            </nav>
         </header>
 
-        <!-- PANTALLA INICIO -->
-        <div id="home-screen" class="screen">
-            <div class="hero-section">
-                <div class="hero-icon">🏛️</div>
-                <h2>Viaja en el Tiempo</h2>
-                <p class="hero-text">Un evento histórico diferente cada día.<br>¿Podrás adivinar el año o el nombre?</p>
-            </div>
-            
-            <button class="btn-primary btn-large" onclick="showScreen('game')">JUGAR HOY</button>
-            
-            <div class="menu-buttons">
-                <button class="btn-secondary" onclick="showScreen('stats')">
-                    <span class="btn-icon">📊</span>
-                    Estadísticas
-                </button>
-                <button class="btn-secondary" onclick="showScreen('history')">
-                    <span class="btn-icon">📚</span>
-                    Historial
-                </button>
-            </div>
-            
-            <a href="archivo.html" class="btn-secondary btn-large" style="text-decoration: none; margin-top: 15px;">
-                <span class="btn-icon">📖</span>
-                Ver Archivo Completo
-            </a>
-            
-            <div class="info-card-single">
-                <div class="info-icon">🎯</div>
-                <div class="info-title">Adivina el Año</div>
-                <div class="info-desc">Tienes 5 intentos para descubrir en qué año ocurrió el evento histórico</div>
-            </div>
-        </div>
+        <main class="main-container">
 
-        <!-- PANTALLA JUEGO -->
-        <div id="game-screen" class="screen hidden">
-            <div class="screen-header">
-                <button class="btn-back" onclick="showScreen('home')">← Volver</button>
-                <button class="btn-icon-only" onclick="showScreen('stats')">📊</button>
-            </div>
-            
-            <div id="game-board">
-                <div class="clue-card">
-                    <div class="clue-label" id="event-date-label">EVENTO DE HOY</div>
-                    <p id="event-description">Cargando historia...</p>
+        <!-- ============ PANTALLA INICIO ============ -->
+        <section id="home-screen" class="screen">
+            <div class="hero">
+                <p class="eyebrow" data-anim>ARCHIVO HISTÓRICO · ESPAÑA &amp; ZARAGOZA</p>
+                <h1 class="display-title" data-anim>
+                    Adivina<br>el <span class="ink-mark">año</span>.
+                </h1>
+                <p class="hero-lead" data-anim>
+                    Un acontecimiento de la historia de España cada día.
+                    Cinco intentos para descubrir cuándo ocurrió. Sin pistas fáciles.
+                </p>
+                <div class="hero-cta" data-anim>
+                    <button class="btn-brick btn-large" onclick="showScreen('game')">
+                        JUGAR HOY <span class="dice" aria-hidden="true">🎲</span>
+                    </button>
                 </div>
+                <div class="hero-actions" data-anim>
+                    <button class="pill" onclick="showScreen('stats')">📊 Estadísticas</button>
+                    <button class="pill" onclick="showScreen('history')">📚 Historial</button>
+                    <a class="pill" href="archivo.html">📖 Archivo completo</a>
+                </div>
+            </div>
+
+            <!-- Tarjeta avance del evento de hoy -->
+            <aside class="teaser-card" data-anim aria-label="Evento de hoy">
+                <div class="teaser-head">
+                    <span class="kicker">EVENTO DE HOY</span>
+                    <span class="kicker kicker-muted" id="teaser-epoca">—</span>
+                </div>
+                <p class="teaser-clue" id="teaser-clue">Cargando el reto de hoy…</p>
+                <div class="teaser-slots" id="teaser-slots" aria-hidden="true"></div>
+                <button class="teaser-go" onclick="showScreen('game')">Empezar a jugar →</button>
+            </aside>
+        </section>
+
+        <!-- ============ PANTALLA JUEGO ============ -->
+        <section id="game-screen" class="screen hidden">
+            <div class="screen-header">
+                <button class="pill" onclick="showScreen('home')">← Volver</button>
+                <span class="screen-flag">RETO DIARIO</span>
+                <button class="pill" onclick="showScreen('stats')">📊</button>
+            </div>
+
+            <div id="game-board">
+                <article class="clue-card" data-anim>
+                    <div class="clue-top">
+                        <span class="clue-label" id="event-date-label">EVENTO DE HOY</span>
+                        <span class="clue-epoca" id="event-epoca"></span>
+                    </div>
+                    <p id="event-description">Cargando historia...</p>
+                </article>
 
                 <div class="attempts-info">
-                    <span id="attempts-counter">Intentos: 0/5</span>
+                    <span class="attempts-text">INTENTOS</span>
+                    <span id="attempts-counter">0/5</span>
                 </div>
 
                 <div id="attempts-container"></div>
 
                 <!-- MODO AÑO -->
                 <div id="year-mode" class="input-area">
-                    <input type="number" id="year-input" placeholder="Año (ej. 1936)" min="0" max="2025">
-                    <button id="submit-btn" onclick="makeGuess()">ENVIAR</button>
+                    <input type="number" id="year-input" placeholder="¿En qué año? Ej. 1492" min="0" max="2026" inputmode="numeric">
+                    <button id="submit-btn" class="btn-brick" onclick="makeGuess()">ENVIAR</button>
                 </div>
-                
+
                 <div id="result-message" class="hidden">
                     <p id="result-text"></p>
-                    <button class="btn-primary" onclick="showScreen('stats')">VER ESTADÍSTICAS</button>
+                    <button class="btn-ink" onclick="showScreen('stats')">VER ESTADÍSTICAS</button>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- PANTALLA ESTADÍSTICAS -->
-        <div id="stats-screen" class="screen hidden">
+        <!-- ============ PANTALLA ESTADÍSTICAS ============ -->
+        <section id="stats-screen" class="screen hidden">
             <div class="screen-header">
-                <button class="btn-back" onclick="showScreen('home')">← Volver</button>
+                <button class="pill" onclick="showScreen('home')">← Volver</button>
+                <span class="screen-flag">TUS NÚMEROS</span>
+                <span class="pill-spacer"></span>
             </div>
-            
-            <h2 class="screen-title">📊 Tus Estadísticas</h2>
-            
+
+            <h2 class="screen-title">Estadísticas</h2>
+
             <div class="stats-grid">
-                <div class="stat-box">
-                    <div class="stat-value" id="stat-played">0</div>
-                    <div class="stat-label">Jugados</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-value" id="stat-wins">0</div>
-                    <div class="stat-label">Ganados</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-value" id="stat-winrate">0%</div>
-                    <div class="stat-label">% Victoria</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-value" id="stat-streak">0</div>
-                    <div class="stat-label">Racha</div>
-                </div>
+                <div class="stat-box"><div class="stat-value" id="stat-played">0</div><div class="stat-label">Jugados</div></div>
+                <div class="stat-box"><div class="stat-value" id="stat-wins">0</div><div class="stat-label">Ganados</div></div>
+                <div class="stat-box"><div class="stat-value" id="stat-winrate">0%</div><div class="stat-label">% Victoria</div></div>
+                <div class="stat-box"><div class="stat-value" id="stat-streak">0</div><div class="stat-label">Racha</div></div>
             </div>
-            
-            <h3 class="subsection-title">Distribución de Intentos</h3>
-            <div id="distribution-chart" class="distribution-chart"></div>
-            
-            <button class="btn-secondary btn-large" onclick="showScreen('history')">VER HISTORIAL</button>
-        </div>
 
-        <!-- PANTALLA HISTORIAL -->
-        <div id="history-screen" class="screen hidden">
+            <h3 class="subsection-title">Distribución de intentos</h3>
+            <div id="distribution-chart" class="distribution-chart"></div>
+
+            <button class="btn-ink btn-large" onclick="showScreen('history')">VER HISTORIAL</button>
+        </section>
+
+        <!-- ============ PANTALLA HISTORIAL ============ -->
+        <section id="history-screen" class="screen hidden">
             <div class="screen-header">
-                <button class="btn-back" onclick="showScreen('home')">← Volver</button>
+                <button class="pill" onclick="showScreen('home')">← Volver</button>
+                <span class="screen-flag">ÚLTIMOS 7 DÍAS</span>
+                <span class="pill-spacer"></span>
             </div>
-            
-            <h2 class="screen-title">📚 Últimos 7 Días</h2>
-            <p class="history-subtitle">Haz clic en cualquier día para jugar</p>
-            
+
+            <h2 class="screen-title">Historial</h2>
+            <p class="history-subtitle">Haz clic en cualquier día para jugarlo</p>
+
             <div id="history-list" class="history-list">
                 <p class="empty-message">Cargando historial...</p>
             </div>
-        </div>
-        </div>
-        
-        <!-- Botón de modo claro/oscuro -->
-        <button id="theme-toggle" class="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar tema">
-            <span class="theme-icon">🌙</span>
-        </button>
-        
+        </section>
+
+        </main>
+
+        <!-- ============ PIE ============ -->
         <footer class="site-footer">
-        <p class="footer-text">🏛️ Desarrollado en Zaragoza, Aragón</p>
-        <p class="footer-subtext">El primer archivo completo de Wordle histórico en español</p>
-        
-        <div class="social-links">
-            <a href="https://www.linkedin.com/in/carlos-solana-melero-153b39262/" target="_blank" rel="noopener noreferrer" class="social-link linkedin">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                LinkedIn
-            </a>
-            <a href="https://www.instagram.com/carlos_solanaa/" target="_blank" rel="noopener noreferrer" class="social-link instagram">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                Instagram
-            </a>
-        </div>
-        
-        <p class="footer-copyright">© 2025 Hispandle | Juego educativo de historia española | Creado por <a href="https://www.linkedin.com/in/carlos-solana-melero-153b39262/" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none;">Carlos Solana</a></p>
+            <div class="footer-top">
+                <span class="footer-brand">HISPANDLE</span>
+                <span class="footer-tag">EL ARCHIVO DE WORDLE HISTÓRICO EN ESPAÑOL</span>
+            </div>
+            <p class="footer-text">🏛️ Desarrollado en Zaragoza, Aragón</p>
+
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/carlos-solana-melero-153b39262/" target="_blank" rel="noopener noreferrer" class="social-link linkedin">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    LinkedIn
+                </a>
+                <a href="https://www.instagram.com/carlos_solanaa/" target="_blank" rel="noopener noreferrer" class="social-link instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    Instagram
+                </a>
+            </div>
+
+            <p class="footer-copyright">© 2025 Hispandle · Juego educativo de historia española · Creado por <a href="https://www.linkedin.com/in/carlos-solana-melero-153b39262/" target="_blank" rel="noopener">Carlos Solana</a></p>
         </footer>
     </div>
-    
+
+    <!-- GSAP (animaciones) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

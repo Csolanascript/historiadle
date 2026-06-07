@@ -10,7 +10,9 @@ Un juego diario al estilo Wordle donde debes adivinar el año de eventos histór
 - **Historia de 7 días**: Juega eventos de los últimos 7 días
 - **Estadísticas**: Seguimiento de victorias, rachas y distribución de intentos
 - **Interfaz atractiva**: Diseño moderno con animaciones y tema oscuro
-- **Eventos históricos**: 37 eventos importantes de la historia de España y Zaragoza
+- **Eventos históricos**: 168 acontecimientos importantes de la historia de España y Zaragoza, agrupados por época
+- **Reto siempre disponible**: el evento del día se calcula de forma determinista, así que nunca faltará puzzle
+- **Diseño editorial**: estética de papel/crema con tipografía display y animaciones GSAP, con tema claro y oscuro
 
 ## 🚀 Despliegue en Cloudflare Pages
 
@@ -53,7 +55,7 @@ historiaEsGame/
 ## 🎯 Cómo Jugar
 
 1. Lee la pista del evento histórico
-2. Intenta adivinar el año (tienes 6 intentos)
+2. Intenta adivinar el año (tienes 5 intentos)
 3. Después de cada intento, verás:
    - 🟢 Verde: Año correcto
    - 🟡 Amarillo: Muy cerca (±10 años)

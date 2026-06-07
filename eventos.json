@@ -1,90 +1,1010 @@
 [
-    {"date": "2025-12-06", "year": 1118, "event": "Conquista de Zaragoza", "clue": "Alfonso I el Batallador reconquista la ciudad musulmana de Saraqusta."},
-    {"date": "2025-12-07", "year": 218, "event": "Fundación Romana", "clue": "Los romanos fundan Caesaraugusta, la futura Zaragoza."},
-    {"date": "2025-12-08", "year": 1492, "event": "Toma de Granada", "clue": "Los Reyes Católicos completan la Reconquista tomando el último reino musulmán."},
-    {"date": "2025-12-09", "year": 711, "event": "Invasión Musulmana", "clue": "Los musulmanes cruzan el Estrecho de Gibraltar e inician la conquista de la península ibérica."},
-    {"date": "2025-12-10", "year": 1936, "event": "Guerra Civil Española", "clue": "Estalla el conflicto bélico más devastador de la historia contemporánea española."},
-    {"date": "2025-12-11", "year": 1282, "event": "Privilegio General", "clue": "Pedro III de Aragón otorga este documento clave para los fueros aragoneses."},
-    {"date": "2025-12-12", "year": 1808, "event": "Sitios de Zaragoza", "clue": "Los franceses comienzan el asedio de la ciudad durante la Guerra de Independencia."},
-    {"date": "2025-12-13", "year": 1492, "event": "Descubrimiento de América", "clue": "Cristóbal Colón llega al Nuevo Mundo cambiando la historia mundial."},
-    {"date": "2025-12-14", "year": 1469, "event": "Boda Real", "clue": "Se casan Isabel de Castilla y Fernando de Aragón en Valladolid."},
-    {"date": "2025-12-15", "year": 1978, "event": "Constitución Española", "clue": "Los españoles ratifican en referéndum la norma suprema del ordenamiento jurídico."},
-    {"date": "2025-12-16", "year": 1212, "event": "Batalla de Las Navas", "clue": "Victoria cristiana decisiva en la Reconquista contra los almohades."},
-    {"date": "2025-12-17", "year": 1975, "event": "Muerte de Franco", "clue": "Fallece el dictador que gobernó España durante casi 40 años."},
-    {"date": "2025-12-18", "year": 409, "event": "Invasiones Bárbaras", "clue": "Suevos, vándalos y alanos cruzan los Pirineos e invaden Hispania."},
-    {"date": "2025-12-19", "year": 1571, "event": "Batalla de Lepanto", "clue": "La Santa Liga derrota al Imperio Otomano en esta batalla naval."},
-    {"date": "2025-12-20", "year": 1520, "event": "Revuelta Comunera", "clue": "Las ciudades castellanas se rebelan contra Carlos I."},
-    {"date": "2025-12-21", "year": 1937, "event": "Batalla de Teruel", "clue": "Ofensiva republicana en plena Guerra Civil para tomar esta ciudad aragonesa."},
-    {"date": "2025-12-22", "year": 1808, "event": "Agustina de Aragón", "clue": "Agustina de Aragón defiende Zaragoza en los Sitios durante la invasión francesa."},
-    {"date": "2025-12-23", "year": 1474, "event": "Coronación de Isabel", "clue": "Isabel es proclamada reina de Castilla, inicio del reinado de los Reyes Católicos."},
-    {"date": "2025-12-24", "year": 1898, "event": "Desastre del 98", "clue": "España pierde sus últimas colonias: Cuba, Puerto Rico y Filipinas."},
-    {"date": "2025-12-25", "year": 25, "event": "Nacimiento de Jesucristo", "clue": "Fecha tradicional del nacimiento de Cristo, fundamental para la cultura occidental."},
-    {"date": "2025-12-26", "year": 1512, "event": "Anexión de Navarra", "clue": "Fernando el Católico incorpora el Reino de Navarra a la Corona de Castilla."},
-    {"date": "2025-12-27", "year": 1065, "event": "Reino de Aragón", "clue": "Ramiro I consolida el Reino de Aragón como entidad independiente."},
-    {"date": "2025-12-28", "year": 1929, "event": "Exposición Universal", "clue": "Barcelona acoge la Exposición Internacional, transformando la ciudad."},
-    {"date": "2025-12-29", "year": 1808, "event": "Dos de Mayo", "clue": "El pueblo de Madrid se levanta contra las tropas napoleónicas."},
-    {"date": "2025-12-30", "year": 1981, "event": "Golpe del 23-F", "clue": "Intento de golpe de estado en el Congreso de los Diputados."},
-    {"date": "2025-12-31", "year": 1999, "event": "Fin del Milenio", "clue": "España se prepara para recibir el nuevo milenio y el euro."},
-    {"date": "2026-01-01", "year": 2002, "event": "Llegada del Euro", "clue": "España adopta el euro como moneda física sustituyendo la peseta."},
-    {"date": "2026-01-02", "year": 1492, "event": "Fin de la Reconquista", "clue": "Finaliza la Reconquista con la toma del Reino Nazarí de Granada."},
-    {"date": "2026-01-03", "year": 1704, "event": "Toma de Gibraltar", "clue": "Inglaterra se apodera del Peñón durante la Guerra de Sucesión."},
-    {"date": "2026-01-04", "year": 1716, "event": "Decretos de Nueva Planta", "clue": "Felipe V suprime los fueros de la Corona de Aragón."},
-    {"date": "2026-01-05", "year": 1492, "event": "Edicto de Granada", "clue": "Los Reyes Católicos decretan la expulsión de los judíos de España."},
-    {"date": "2026-01-06", "year": 1412, "event": "Compromiso de Caspe", "clue": "Se elige a Fernando de Antequera como rey de la Corona de Aragón."},
-    {"date": "2026-01-07", "year": 1931, "event": "Segunda República", "clue": "Las Cortes aprueban la constitución de la Segunda República."},
-    {"date": "2026-01-08", "year": 1939, "event": "Fin Guerra Civil", "clue": "Las tropas franquistas toman Barcelona, próximo al fin de la guerra."},
-    {"date": "2026-01-09", "year": 1873, "event": "Primera República", "clue": "Se proclama la Primera República Española tras la abdicación de Amadeo I."},
-    {"date": "2026-01-10", "year": 1519, "event": "Carlos I Emperador", "clue": "Carlos I de España es coronado Emperador del Sacro Imperio."},
-    {"date": "2026-01-11", "year": 1809, "event": "Fin del Sitio", "clue": "Termina el segundo sitio de Zaragoza con la capitulación ante los franceses."},
-    {"date": "2026-01-12", "year": 2008, "event": "Expo Zaragoza", "clue": "Zaragoza acoge la Exposición Internacional sobre agua y desarrollo sostenible."},
-    {"date": "2026-01-13", "year": 711, "event": "Batalla de Guadalete", "clue": "Los musulmanes derrotan a Don Rodrigo, último rey visigodo."},
-    {"date": "2026-01-14", "year": 1977, "event": "Autonomía de Aragón", "clue": "Se inicia el proceso autonómico aragonés con la creación de la preautonomía."},
-    {"date": "2026-01-15", "year": 1516, "event": "Carlos I Rey", "clue": "Carlos de Habsburgo se convierte en rey de España."},
-    {"date": "2026-01-16", "year": 1556, "event": "Abdicación Carlos V", "clue": "Carlos V abdica y divide su imperio entre Felipe II y Fernando I."},
-    {"date": "2026-01-17", "year": 1706, "event": "Batalla de Almansa", "clue": "Victoria borbónica decisiva en la Guerra de Sucesión Española."},
-    {"date": "2026-01-18", "year": 1492, "event": "Gramática Castellana", "clue": "Nebrija publica la primera gramática de la lengua castellana."},
-    {"date": "2026-01-19", "year": 1892, "event": "Casino de Zaragoza", "clue": "Se inaugura el Casino Principal de Zaragoza en el Paseo de la Independencia."},
-    {"date": "2026-01-20", "year": 1479, "event": "Unión Dinástica", "clue": "Fernando II de Aragón hereda el trono, consolidando la unión con Castilla."},
-    {"date": "2026-01-21", "year": 1793, "event": "Guerra Rosellón", "clue": "España entra en guerra contra la Francia revolucionaria."},
-    {"date": "2026-01-22", "year": 1878, "event": "Restauración Borbónica", "clue": "Alfonso XII restaura la monarquía tras la Primera República."},
-    {"date": "2026-01-23", "year": 1556, "event": "Felipe II Rey", "clue": "Felipe II asume el trono de España iniciando su largo reinado."},
-    {"date": "2026-01-24", "year": 1986, "event": "Entrada en la CEE", "clue": "España se convierte en miembro de la Comunidad Económica Europea."},
-    {"date": "2026-01-25", "year": 1494, "event": "Tratado de Tordesillas", "clue": "España y Portugal se reparten el Nuevo Mundo."},
-    {"date": "2026-01-26", "year": 1808, "event": "Motín de Aranjuez", "clue": "Carlos IV abdica en favor de Fernando VII tras un motín popular."},
-    {"date": "2026-01-27", "year": 1939, "event": "Exilio Republicano", "clue": "Miles de españoles cruzan la frontera francesa huyendo del franquismo."},
-    {"date": "2026-01-28", "year": 1516, "event": "Muerte Fernando II", "clue": "Fallece Fernando el Católico, uno de los Reyes Católicos."},
-    {"date": "2026-01-29", "year": 1170, "event": "Fueros de Aragón", "clue": "Alfonso II otorga importantes fueros a las ciudades aragonesas."},
-    {"date": "2026-01-30", "year": 1648, "event": "Paz de Westfalia", "clue": "España reconoce la independencia de los Países Bajos."},
-    {"date": "2026-01-31", "year": 1700, "event": "Muerte Carlos II", "clue": "Muere Carlos II sin descendencia, iniciándose la Guerra de Sucesión."},
-    {"date": "2026-02-01", "year": 1502, "event": "Conquista de Granada", "clue": "Los Reyes Católicos ordenan la conversión forzosa de los musulmanes."},
-    {"date": "2026-02-02", "year": 589, "event": "III Concilio Toledo", "clue": "El rey Recaredo convierte el reino visigodo al catolicismo."},
-    {"date": "2026-02-03", "year": 1810, "event": "Cortes de Cádiz", "clue": "Se reúnen las Cortes Generales durante la ocupación francesa."},
-    {"date": "2026-02-04", "year": 1878, "event": "Paz de Zanjón", "clue": "Finaliza la Guerra de los Diez Años en Cuba."},
-    {"date": "2026-02-05", "year": 1597, "event": "Victoria de Armada", "clue": "España rechaza el ataque inglés a Cádiz."},
-    {"date": "2026-02-06", "year": 1945, "event": "División Azul", "clue": "Regresa de Rusia la última unidad española que luchó en la Segunda Guerra Mundial."},
-    {"date": "2026-02-07", "year": 1238, "event": "Conquista de Valencia", "clue": "Jaime I el Conquistador toma la ciudad de Valencia."},
-    {"date": "2026-02-08", "year": 1812, "event": "Constitución de Cádiz", "clue": "Se promulga La Pepa, primera constitución española."},
-    {"date": "2026-02-09", "year": 1865, "event": "Guerra con Chile", "clue": "España entra en guerra con Chile y Perú por el Pacífico."},
-    {"date": "2026-02-10", "year": 1794, "event": "Batalla del Rosellón", "clue": "España reconquista territorios catalanes perdidos ante Francia."},
-    {"date": "2026-02-11", "year": 1873, "event": "Abdicación de Amadeo", "clue": "Amadeo I abdica, dando paso a la Primera República."},
-    {"date": "2026-02-12", "year": 1429, "event": "Orden Caballeros", "clue": "Alfonso V de Aragón crea la Orden del Toisón de Oro."},
-    {"date": "2026-02-13", "year": 1502, "event": "Conquista de Canarias", "clue": "España completa la conquista del archipiélago canario."},
-    {"date": "2026-02-14", "year": 1808, "event": "Bayona", "clue": "Fernando VII es obligado a abdicar en favor de José Bonaparte."},
-    {"date": "2026-02-15", "year": 1898, "event": "Maine Explosión", "clue": "El hundimiento del Maine precipita la guerra con Estados Unidos."},
-    {"date": "2026-02-16", "year": 1946, "event": "Aislamiento Franquista", "clue": "La ONU condena al régimen franquista y recomienda retirar embajadores."},
-    {"date": "2026-02-17", "year": 1913, "event": "Asesinato Canalejas", "clue": "El presidente del gobierno es asesinado por un anarquista."},
-    {"date": "2026-02-18", "year": 1936, "event": "Frente Popular", "clue": "El Frente Popular gana las elecciones en España."},
-    {"date": "2026-02-19", "year": 1237, "event": "Reconquista de Córdoba", "clue": "Fernando III de Castilla reconquista la ciudad de Córdoba."},
-    {"date": "2026-02-20", "year": 1524, "event": "Revuelta Germanías", "clue": "Se sofoca la rebelión de las Germanías en Valencia."},
-    {"date": "2026-02-21", "year": 1981, "event": "Intento de Golpe", "clue": "El teniente coronel Tejero irrumpe en el Congreso."},
-    {"date": "2026-02-22", "year": 1512, "event": "Leyes de Burgos", "clue": "Primera legislación española para proteger a los indígenas americanos."},
-    {"date": "2026-02-23", "year": 1981, "event": "23-F", "clue": "El Rey Juan Carlos I frustra el golpe de estado en un mensaje televisado."},
-    {"date": "2026-02-24", "year": 1525, "event": "Batalla de Pavía", "clue": "Carlos I derrota y captura a Francisco I de Francia."},
-    {"date": "2026-02-25", "year": 1248, "event": "Reconquista de Sevilla", "clue": "Fernando III conquista Sevilla tras 16 meses de asedio."},
-    {"date": "2026-02-26", "year": 1815, "event": "Regreso de Fernando VII", "clue": "Fernando VII regresa a España tras la derrota de Napoleón."},
-    {"date": "2026-02-27", "year": 1939, "event": "Reconocimiento Franco", "clue": "Francia y Reino Unido reconocen el gobierno de Franco."},
-    {"date": "2026-02-28", "year": 1980, "event": "Estatuto de Cataluña", "clue": "Se aprueba el Estatuto de Autonomía de Cataluña."},
-    {"date": "2026-03-01", "year": 1476, "event": "Batalla de Toro", "clue": "Isabel y Fernando consolidan su poder en Castilla."},
-    {"date": "2026-03-02", "year": 1931, "event": "Proclamación República", "clue": "Se proclama la Segunda República tras la victoria electoral republicana."},
-    {"date": "2026-03-03", "year": 1808, "event": "Crisis de la Corona", "clue": "Carlos IV y Fernando VII son forzados a abdicar en Napoleón."}
+  {
+    "year": 304,
+    "event": "Mártires de Zaragoza",
+    "clue": "Bajo la persecución de Diocleciano son ejecutados los Innumerables Mártires de Caesaraugusta.",
+    "epoca": "Antigua"
+  },
+  {
+    "year": 380,
+    "event": "Concilio de Caesaraugusta",
+    "clue": "La ciudad romana del Ebro acoge su primer concilio cristiano, que condena el priscilianismo.",
+    "epoca": "Antigua"
+  },
+  {
+    "year": 409,
+    "event": "Invasiones bárbaras",
+    "clue": "Suevos, vándalos y alanos cruzan los Pirineos e invaden Hispania.",
+    "epoca": "Antigua"
+  },
+  {
+    "year": 415,
+    "event": "Llegada de los visigodos",
+    "clue": "El pueblo visigodo penetra en la península y se asienta como aliado de Roma.",
+    "epoca": "Visigoda"
+  },
+  {
+    "year": 507,
+    "event": "Reino visigodo de Toledo",
+    "clue": "Tras perder sus tierras en la Galia, los visigodos fijan su poder en la meseta.",
+    "epoca": "Visigoda"
+  },
+  {
+    "year": 589,
+    "event": "III Concilio de Toledo",
+    "clue": "El rey Recaredo abjura del arrianismo y convierte el reino al catolicismo.",
+    "epoca": "Visigoda"
+  },
+  {
+    "year": 654,
+    "event": "Liber Iudiciorum",
+    "clue": "Recesvinto promulga un código legal único para godos e hispanorromanos.",
+    "epoca": "Visigoda"
+  },
+  {
+    "year": 711,
+    "event": "Invasión musulmana",
+    "clue": "El ejército de Tariq derrota a don Rodrigo en Guadalete e inicia la conquista de la península.",
+    "epoca": "Al-Ándalus"
+  },
+  {
+    "year": 722,
+    "event": "Batalla de Covadonga",
+    "clue": "Don Pelayo vence a los musulmanes en Asturias, hito simbólico del inicio de la Reconquista.",
+    "epoca": "Reconquista"
+  },
+  {
+    "year": 756,
+    "event": "Emirato de Córdoba",
+    "clue": "Abderramán I funda un emirato independiente del califato de Damasco.",
+    "epoca": "Al-Ándalus"
+  },
+  {
+    "year": 778,
+    "event": "Batalla de Roncesvalles",
+    "clue": "La retaguardia del ejército de Carlomagno es aniquilada en un paso de los Pirineos.",
+    "epoca": "Al-Ándalus"
+  },
+  {
+    "year": 785,
+    "event": "Mezquita de Córdoba",
+    "clue": "Abderramán I inicia la construcción de la gran mezquita junto al Guadalquivir.",
+    "epoca": "Al-Ándalus"
+  },
+  {
+    "year": 801,
+    "event": "Conquista de Barcelona",
+    "clue": "Los francos toman la ciudad condal y crean la Marca Hispánica.",
+    "epoca": "Reconquista"
+  },
+  {
+    "year": 813,
+    "event": "Sepulcro de Santiago",
+    "clue": "Se descubre en Galicia una tumba atribuida al apóstol, origen de Compostela.",
+    "epoca": "Reconquista"
+  },
+  {
+    "year": 929,
+    "event": "Califato de Córdoba",
+    "clue": "Abderramán III se proclama califa y eleva al-Ándalus a su máximo esplendor.",
+    "epoca": "Al-Ándalus"
+  },
+  {
+    "year": 936,
+    "event": "Medina Azahara",
+    "clue": "Abderramán III ordena levantar una fastuosa ciudad palatina a las afueras de Córdoba.",
+    "epoca": "Al-Ándalus"
+  },
+  {
+    "year": 997,
+    "event": "Almanzor saquea Santiago",
+    "clue": "El caudillo cordobés arrasa la ciudad del apóstol y se lleva las campanas.",
+    "epoca": "Al-Ándalus"
+  },
+  {
+    "year": 1031,
+    "event": "Fin del Califato",
+    "clue": "El poder cordobés se desintegra y nacen los reinos de taifas.",
+    "epoca": "Al-Ándalus"
+  },
+  {
+    "year": 1085,
+    "event": "Conquista de Toledo",
+    "clue": "Alfonso VI toma la antigua capital visigoda, gran avance cristiano.",
+    "epoca": "Reconquista"
+  },
+  {
+    "year": 1086,
+    "event": "Batalla de Sagrajas",
+    "clue": "Los almorávides venidos del norte de África frenan el avance de Alfonso VI.",
+    "epoca": "Reconquista"
+  },
+  {
+    "year": 1094,
+    "event": "El Cid toma Valencia",
+    "clue": "Rodrigo Díaz de Vivar conquista la ciudad del Turia a los musulmanes.",
+    "epoca": "Reconquista"
+  },
+  {
+    "year": 1118,
+    "event": "Conquista de Zaragoza",
+    "clue": "Alfonso I el Batallador reconquista la ciudad musulmana de Saraqusta.",
+    "epoca": "Reconquista"
+  },
+  {
+    "year": 1137,
+    "event": "Unión de Aragón y Barcelona",
+    "clue": "El matrimonio de Petronila y Ramón Berenguer IV origina la Corona de Aragón.",
+    "epoca": "Corona de Aragón"
+  },
+  {
+    "year": 1195,
+    "event": "Batalla de Alarcos",
+    "clue": "Los almohades infligen una grave derrota a las tropas de Alfonso VIII.",
+    "epoca": "Reconquista"
+  },
+  {
+    "year": 1212,
+    "event": "Batalla de Las Navas de Tolosa",
+    "clue": "Las coronas cristianas unidas logran una victoria decisiva sobre los almohades.",
+    "epoca": "Reconquista"
+  },
+  {
+    "year": 1213,
+    "event": "Batalla de Muret",
+    "clue": "Pedro II de Aragón muere combatiendo en el sur de Francia durante la cruzada albigense.",
+    "epoca": "Corona de Aragón"
+  },
+  {
+    "year": 1229,
+    "event": "Conquista de Mallorca",
+    "clue": "Jaime I el Conquistador incorpora las Baleares a la Corona de Aragón.",
+    "epoca": "Corona de Aragón"
+  },
+  {
+    "year": 1238,
+    "event": "Conquista de Valencia",
+    "clue": "Jaime I toma la ciudad y funda el Reino de Valencia.",
+    "epoca": "Corona de Aragón"
+  },
+  {
+    "year": 1248,
+    "event": "Conquista de Sevilla",
+    "clue": "Fernando III el Santo arrebata a los musulmanes la gran ciudad del Guadalquivir.",
+    "epoca": "Reconquista"
+  },
+  {
+    "year": 1283,
+    "event": "Privilegio General de Aragón",
+    "clue": "Pedro III otorga en las Cortes de Zaragoza una carta clave para los fueros aragoneses.",
+    "epoca": "Corona de Aragón"
+  },
+  {
+    "year": 1412,
+    "event": "Compromiso de Caspe",
+    "clue": "Nueve compromisarios eligen a Fernando de Antequera como rey de Aragón.",
+    "epoca": "Corona de Aragón"
+  },
+  {
+    "year": 1469,
+    "event": "Boda de los Reyes Católicos",
+    "clue": "Isabel de Castilla y Fernando de Aragón se casan en Valladolid.",
+    "epoca": "Reyes Católicos"
+  },
+  {
+    "year": 1478,
+    "event": "Inquisición española",
+    "clue": "Una bula papal autoriza a los Reyes Católicos a crear su propio tribunal de la fe.",
+    "epoca": "Reyes Católicos"
+  },
+  {
+    "year": 1492,
+    "event": "Toma de Granada",
+    "clue": "Los Reyes Católicos completan la Reconquista al rendirse el último reino nazarí.",
+    "epoca": "Reyes Católicos"
+  },
+  {
+    "year": 1492,
+    "event": "Descubrimiento de América",
+    "clue": "Cristóbal Colón llega al Nuevo Mundo tras zarpar de Palos.",
+    "epoca": "Reyes Católicos"
+  },
+  {
+    "year": 1492,
+    "event": "Expulsión de los judíos",
+    "clue": "El Decreto de la Alhambra obliga a los hebreos a convertirse o abandonar los reinos.",
+    "epoca": "Reyes Católicos"
+  },
+  {
+    "year": 1492,
+    "event": "Gramática de Nebrija",
+    "clue": "Antonio de Nebrija publica la primera gramática de una lengua romance.",
+    "epoca": "Cultura"
+  },
+  {
+    "year": 1494,
+    "event": "Tratado de Tordesillas",
+    "clue": "Castilla y Portugal reparten el mundo por descubrir con una línea trazada en el océano.",
+    "epoca": "Reyes Católicos"
+  },
+  {
+    "year": 1512,
+    "event": "Conquista de Navarra",
+    "clue": "Fernando el Católico incorpora el reino pirenaico a la Corona de Castilla.",
+    "epoca": "Reyes Católicos"
+  },
+  {
+    "year": 1516,
+    "event": "Carlos I, rey de España",
+    "clue": "Llega al trono el primer monarca de la dinastía de los Austrias.",
+    "epoca": "Edad Moderna"
+  },
+  {
+    "year": 1519,
+    "event": "Carlos V, emperador",
+    "clue": "El rey de España es elegido emperador del Sacro Imperio Romano Germánico.",
+    "epoca": "Edad Moderna"
+  },
+  {
+    "year": 1520,
+    "event": "Comunidades de Castilla",
+    "clue": "Las ciudades castellanas se rebelan contra los impuestos de Carlos I.",
+    "epoca": "Edad Moderna"
+  },
+  {
+    "year": 1521,
+    "event": "Batalla de Villalar",
+    "clue": "Las tropas reales derrotan a los comuneros, que pierden a sus líderes.",
+    "epoca": "Edad Moderna"
+  },
+  {
+    "year": 1521,
+    "event": "Caída de Tenochtitlan",
+    "clue": "Hernán Cortés conquista la capital del Imperio azteca.",
+    "epoca": "Edad Moderna"
+  },
+  {
+    "year": 1522,
+    "event": "Primera vuelta al mundo",
+    "clue": "Juan Sebastián Elcano completa la circunnavegación iniciada por Magallanes.",
+    "epoca": "Edad Moderna"
+  },
+  {
+    "year": 1532,
+    "event": "Conquista del Perú",
+    "clue": "Francisco Pizarro captura al inca Atahualpa en Cajamarca.",
+    "epoca": "Edad Moderna"
+  },
+  {
+    "year": 1542,
+    "event": "Universidad de Zaragoza",
+    "clue": "Carlos I concede el privilegio que eleva a Estudio General la enseñanza en la ciudad.",
+    "epoca": "Zaragoza y Aragón"
+  },
+  {
+    "year": 1556,
+    "event": "Felipe II, rey",
+    "clue": "Asciende al trono el monarca del imperio donde no se ponía el sol.",
+    "epoca": "Edad Moderna"
+  },
+  {
+    "year": 1561,
+    "event": "Madrid, capital",
+    "clue": "Felipe II fija de forma estable la corte en la villa del Manzanares.",
+    "epoca": "Edad Moderna"
+  },
+  {
+    "year": 1563,
+    "event": "El Escorial",
+    "clue": "Felipe II inicia la construcción de su monumental monasterio y palacio.",
+    "epoca": "Edad Moderna"
+  },
+  {
+    "year": 1571,
+    "event": "Batalla de Lepanto",
+    "clue": "La Santa Liga derrota a la flota otomana en una gran batalla naval.",
+    "epoca": "Edad Moderna"
+  },
+  {
+    "year": 1577,
+    "event": "El Greco en Toledo",
+    "clue": "El pintor cretense se instala en la ciudad imperial, donde desarrollará su obra.",
+    "epoca": "Cultura"
+  },
+  {
+    "year": 1588,
+    "event": "La Armada Invencible",
+    "clue": "La gran flota de Felipe II fracasa en su intento de invadir Inglaterra.",
+    "epoca": "Edad Moderna"
+  },
+  {
+    "year": 1591,
+    "event": "Alteraciones de Aragón",
+    "clue": "La ejecución del Justicia Juan de Lanuza marca el fin de las libertades aragonesas frente a Felipe II.",
+    "epoca": "Zaragoza y Aragón"
+  },
+  {
+    "year": 1605,
+    "event": "El Quijote",
+    "clue": "Cervantes publica la primera parte de las aventuras del ingenioso hidalgo.",
+    "epoca": "Cultura"
+  },
+  {
+    "year": 1609,
+    "event": "Expulsión de los moriscos",
+    "clue": "Felipe III ordena la salida de los descendientes de musulmanes conversos.",
+    "epoca": "Edad Moderna"
+  },
+  {
+    "year": 1640,
+    "event": "Sublevación de Cataluña",
+    "clue": "El Corpus de Sang desata la revuelta catalana, mientras Portugal proclama su independencia.",
+    "epoca": "Edad Moderna"
+  },
+  {
+    "year": 1643,
+    "event": "Batalla de Rocroi",
+    "clue": "La derrota de los tercios ante Francia simboliza el ocaso militar español.",
+    "epoca": "Edad Moderna"
+  },
+  {
+    "year": 1656,
+    "event": "Las Meninas",
+    "clue": "Velázquez culmina en la corte su obra maestra de la pintura barroca.",
+    "epoca": "Cultura"
+  },
+  {
+    "year": 1659,
+    "event": "Paz de los Pirineos",
+    "clue": "El tratado con Francia fija la frontera y cede el Rosellón.",
+    "epoca": "Edad Moderna"
+  },
+  {
+    "year": 1681,
+    "event": "Basílica del Pilar",
+    "clue": "Se inicia la construcción del actual gran templo barroco a orillas del Ebro.",
+    "epoca": "Zaragoza y Aragón"
+  },
+  {
+    "year": 1700,
+    "event": "Muerte de Carlos II",
+    "clue": "El último Austria muere sin descendencia, abriendo la lucha por la sucesión.",
+    "epoca": "Edad Moderna"
+  },
+  {
+    "year": 1707,
+    "event": "Decretos de Nueva Planta",
+    "clue": "Felipe V abole los fueros de Aragón y Valencia tras la batalla de Almansa.",
+    "epoca": "Borbones"
+  },
+  {
+    "year": 1713,
+    "event": "Tratado de Utrecht",
+    "clue": "El acuerdo que cierra la Guerra de Sucesión cede Gibraltar y Menorca a Gran Bretaña.",
+    "epoca": "Borbones"
+  },
+  {
+    "year": 1713,
+    "event": "Real Academia Española",
+    "clue": "Se funda la institución encargada de velar por el idioma, con su lema 'Limpia, fija y da esplendor'.",
+    "epoca": "Cultura"
+  },
+  {
+    "year": 1714,
+    "event": "Caída de Barcelona",
+    "clue": "La ciudad capitula ante las tropas borbónicas y termina la Guerra de Sucesión.",
+    "epoca": "Borbones"
+  },
+  {
+    "year": 1746,
+    "event": "Nace Goya",
+    "clue": "En la localidad zaragozana de Fuendetodos nace uno de los mayores pintores de la historia.",
+    "epoca": "Cultura"
+  },
+  {
+    "year": 1759,
+    "event": "Carlos III, rey",
+    "clue": "Sube al trono el gran monarca reformista del despotismo ilustrado.",
+    "epoca": "Borbones"
+  },
+  {
+    "year": 1766,
+    "event": "Motín de Esquilache",
+    "clue": "Una revuelta popular en Madrid protesta contra un ministro italiano y la prohibición de capas y sombreros.",
+    "epoca": "Borbones"
+  },
+  {
+    "year": 1767,
+    "event": "Expulsión de los jesuitas",
+    "clue": "Carlos III ordena la salida de la Compañía de Jesús de todos sus reinos.",
+    "epoca": "Borbones"
+  },
+  {
+    "year": 1782,
+    "event": "Banco de San Carlos",
+    "clue": "Se crea la institución financiera precursora del Banco de España.",
+    "epoca": "Borbones"
+  },
+  {
+    "year": 1805,
+    "event": "Batalla de Trafalgar",
+    "clue": "La flota franco-española es derrotada por Nelson frente a las costas gaditanas.",
+    "epoca": "Siglo XIX"
+  },
+  {
+    "year": 1808,
+    "event": "Levantamiento del 2 de mayo",
+    "clue": "El pueblo de Madrid se subleva contra las tropas napoleónicas.",
+    "epoca": "Guerra de la Independencia"
+  },
+  {
+    "year": 1808,
+    "event": "Los Sitios de Zaragoza",
+    "clue": "Los franceses inician el asedio de la ciudad, defendida con heroísmo por Palafox.",
+    "epoca": "Zaragoza y Aragón"
+  },
+  {
+    "year": 1808,
+    "event": "Batalla de Bailén",
+    "clue": "Las tropas españolas logran la primera gran derrota en campo abierto de un ejército napoleónico.",
+    "epoca": "Guerra de la Independencia"
+  },
+  {
+    "year": 1809,
+    "event": "Segundo Sitio de Zaragoza",
+    "clue": "Tras meses de resistencia y epidemias, la ciudad del Ebro capitula ante el ejército francés.",
+    "epoca": "Zaragoza y Aragón"
+  },
+  {
+    "year": 1812,
+    "event": "Constitución de Cádiz",
+    "clue": "Las Cortes aprueban la primera carta magna española, apodada 'La Pepa'.",
+    "epoca": "Siglo XIX"
+  },
+  {
+    "year": 1814,
+    "event": "Regreso de Fernando VII",
+    "clue": "El rey deseado vuelve del exilio y restaura el absolutismo.",
+    "epoca": "Siglo XIX"
+  },
+  {
+    "year": 1819,
+    "event": "Museo del Prado",
+    "clue": "Abre al público en Madrid una de las grandes pinacotecas del mundo.",
+    "epoca": "Cultura"
+  },
+  {
+    "year": 1820,
+    "event": "Trienio Liberal",
+    "clue": "El pronunciamiento de Riego obliga a Fernando VII a jurar la Constitución.",
+    "epoca": "Siglo XIX"
+  },
+  {
+    "year": 1833,
+    "event": "Primera Guerra Carlista",
+    "clue": "La muerte de Fernando VII enfrenta a los partidarios de Isabel II y de don Carlos.",
+    "epoca": "Siglo XIX"
+  },
+  {
+    "year": 1836,
+    "event": "Desamortización de Mendizábal",
+    "clue": "El Estado expropia y vende los bienes de la Iglesia para sanear la hacienda.",
+    "epoca": "Siglo XIX"
+  },
+  {
+    "year": 1868,
+    "event": "La Gloriosa",
+    "clue": "Una revolución destrona a Isabel II e inicia el Sexenio Democrático.",
+    "epoca": "Siglo XIX"
+  },
+  {
+    "year": 1873,
+    "event": "Primera República",
+    "clue": "La abdicación de Amadeo I da paso al primer ensayo republicano español.",
+    "epoca": "Siglo XIX"
+  },
+  {
+    "year": 1874,
+    "event": "Restauración borbónica",
+    "clue": "Un pronunciamiento devuelve el trono a los Borbones con Alfonso XII.",
+    "epoca": "Siglo XIX"
+  },
+  {
+    "year": 1881,
+    "event": "Nace Picasso",
+    "clue": "En Málaga nace el pintor que revolucionaría el arte del siglo XX.",
+    "epoca": "Cultura"
+  },
+  {
+    "year": 1882,
+    "event": "Sagrada Família",
+    "clue": "Comienzan en Barcelona las obras del templo que Gaudí convertiría en su obra cumbre.",
+    "epoca": "Cultura"
+  },
+  {
+    "year": 1888,
+    "event": "Exposición Universal de Barcelona",
+    "clue": "La ciudad condal acoge su primer gran certamen internacional.",
+    "epoca": "Siglo XIX"
+  },
+  {
+    "year": 1898,
+    "event": "Desastre del 98",
+    "clue": "España pierde Cuba, Puerto Rico y Filipinas tras la guerra con Estados Unidos.",
+    "epoca": "Siglo XIX"
+  },
+  {
+    "year": 1902,
+    "event": "Fundación del Real Madrid",
+    "clue": "Nace en la capital uno de los clubes de fútbol más laureados del mundo.",
+    "epoca": "Cultura"
+  },
+  {
+    "year": 1906,
+    "event": "Nobel para Ramón y Cajal",
+    "clue": "El gran histólogo recibe el premio por sus estudios sobre el sistema nervioso.",
+    "epoca": "Cultura"
+  },
+  {
+    "year": 1908,
+    "event": "Exposición Hispano-Francesa",
+    "clue": "Zaragoza celebra un gran certamen al cumplirse el centenario de los Sitios.",
+    "epoca": "Zaragoza y Aragón"
+  },
+  {
+    "year": 1909,
+    "event": "Semana Trágica",
+    "clue": "Una revuelta obrera y anticlerical sacude Barcelona por el envío de tropas a Marruecos.",
+    "epoca": "Siglo XX"
+  },
+  {
+    "year": 1919,
+    "event": "Metro de Madrid",
+    "clue": "Se inaugura la primera línea del ferrocarril subterráneo de la capital.",
+    "epoca": "Siglo XX"
+  },
+  {
+    "year": 1921,
+    "event": "Desastre de Annual",
+    "clue": "El ejército español sufre una catástrofe militar en el norte de Marruecos.",
+    "epoca": "Siglo XX"
+  },
+  {
+    "year": 1923,
+    "event": "Dictadura de Primo de Rivera",
+    "clue": "Un golpe de Estado instaura un régimen militar con el visto bueno del rey.",
+    "epoca": "Siglo XX"
+  },
+  {
+    "year": 1929,
+    "event": "Exposición Iberoamericana",
+    "clue": "Sevilla acoge un gran certamen internacional que transforma la ciudad.",
+    "epoca": "Siglo XX"
+  },
+  {
+    "year": 1931,
+    "event": "Segunda República",
+    "clue": "Las elecciones municipales provocan la marcha del rey y la proclamación de la República.",
+    "epoca": "Siglo XX"
+  },
+  {
+    "year": 1933,
+    "event": "Voto femenino",
+    "clue": "Las mujeres ejercen por primera vez el derecho al voto en unas elecciones generales.",
+    "epoca": "Siglo XX"
+  },
+  {
+    "year": 1934,
+    "event": "Revolución de Asturias",
+    "clue": "Una insurrección obrera es reprimida por el ejército en las cuencas mineras.",
+    "epoca": "Siglo XX"
+  },
+  {
+    "year": 1936,
+    "event": "Guerra Civil Española",
+    "clue": "Un golpe militar fracasado deriva en el conflicto bélico más devastador del país.",
+    "epoca": "Guerra Civil"
+  },
+  {
+    "year": 1936,
+    "event": "Fusilamiento de Lorca",
+    "clue": "El poeta granadino es asesinado al inicio de la contienda.",
+    "epoca": "Guerra Civil"
+  },
+  {
+    "year": 1937,
+    "event": "Bombardeo de Gernika",
+    "clue": "La aviación alemana arrasa la villa vasca, inspirando un cuadro de Picasso.",
+    "epoca": "Guerra Civil"
+  },
+  {
+    "year": 1938,
+    "event": "Batalla del Ebro",
+    "clue": "La mayor y más sangrienta batalla de la contienda se libra en tierras catalanas y aragonesas.",
+    "epoca": "Guerra Civil"
+  },
+  {
+    "year": 1939,
+    "event": "Fin de la Guerra Civil",
+    "clue": "La entrada de las tropas en Madrid pone fin al conflicto e instaura la dictadura.",
+    "epoca": "Guerra Civil"
+  },
+  {
+    "year": 1940,
+    "event": "Entrevista de Hendaya",
+    "clue": "Franco y Hitler se reúnen en la frontera sin llegar a un acuerdo sobre la guerra.",
+    "epoca": "Franquismo"
+  },
+  {
+    "year": 1953,
+    "event": "Pactos de Madrid",
+    "clue": "España firma acuerdos con Estados Unidos que permiten bases militares en su territorio.",
+    "epoca": "Franquismo"
+  },
+  {
+    "year": 1955,
+    "event": "España en la ONU",
+    "clue": "El país rompe su aislamiento internacional al ingresar en la organización.",
+    "epoca": "Franquismo"
+  },
+  {
+    "year": 1959,
+    "event": "Plan de Estabilización",
+    "clue": "Un giro económico abre el país al exterior e impulsa el desarrollismo.",
+    "epoca": "Franquismo"
+  },
+  {
+    "year": 1959,
+    "event": "Fundación de ETA",
+    "clue": "Nace la organización terrorista que aspira a la independencia del País Vasco.",
+    "epoca": "Franquismo"
+  },
+  {
+    "year": 1966,
+    "event": "Ley de Prensa",
+    "clue": "La norma de Fraga suaviza ligeramente la censura sobre los medios.",
+    "epoca": "Franquismo"
+  },
+  {
+    "year": 1969,
+    "event": "Juan Carlos, sucesor",
+    "clue": "Franco designa al príncipe como su sucesor a título de rey.",
+    "epoca": "Franquismo"
+  },
+  {
+    "year": 1973,
+    "event": "Magnicidio de Carrero Blanco",
+    "clue": "ETA asesina en Madrid al presidente del Gobierno mediante un atentado con explosivos.",
+    "epoca": "Franquismo"
+  },
+  {
+    "year": 1975,
+    "event": "Muerte de Franco",
+    "clue": "Fallece el dictador tras casi cuarenta años en el poder.",
+    "epoca": "Franquismo"
+  },
+  {
+    "year": 1977,
+    "event": "Primeras elecciones democráticas",
+    "clue": "Tras la dictadura, los españoles votan en los primeros comicios libres en décadas.",
+    "epoca": "Transición"
+  },
+  {
+    "year": 1978,
+    "event": "Constitución Española",
+    "clue": "Los ciudadanos ratifican en referéndum la norma suprema de la democracia.",
+    "epoca": "Transición"
+  },
+  {
+    "year": 1981,
+    "event": "Golpe del 23-F",
+    "clue": "Un grupo de guardias civiles asalta el Congreso en un intento de golpe de Estado.",
+    "epoca": "Transición"
+  },
+  {
+    "year": 1982,
+    "event": "Mayoría socialista",
+    "clue": "El PSOE de Felipe González gana las elecciones por amplia mayoría.",
+    "epoca": "Democracia"
+  },
+  {
+    "year": 1986,
+    "event": "Ingreso en la CEE",
+    "clue": "España se integra en la Comunidad Económica Europea, hoy Unión Europea.",
+    "epoca": "Democracia"
+  },
+  {
+    "year": 1989,
+    "event": "Nobel para Cela",
+    "clue": "El novelista gallego recibe el máximo galardón de las letras.",
+    "epoca": "Cultura"
+  },
+  {
+    "year": 1992,
+    "event": "Juegos Olímpicos de Barcelona",
+    "clue": "La ciudad condal acoge los Juegos mientras Sevilla celebra una Exposición Universal.",
+    "epoca": "Democracia"
+  },
+  {
+    "year": 2002,
+    "event": "Llega el euro",
+    "clue": "La peseta desaparece y entra en circulación la moneda única europea.",
+    "epoca": "Democracia"
+  },
+  {
+    "year": 2004,
+    "event": "Atentados del 11-M",
+    "clue": "Una cadena de explosiones en trenes de cercanías golpea Madrid.",
+    "epoca": "Democracia"
+  },
+  {
+    "year": 2008,
+    "event": "Expo de Zaragoza",
+    "clue": "La ciudad del Ebro acoge una Exposición Internacional dedicada al agua.",
+    "epoca": "Zaragoza y Aragón"
+  },
+  {
+    "year": 2010,
+    "event": "Campeones del mundo",
+    "clue": "La selección española de fútbol gana por primera vez la Copa del Mundo, en Sudáfrica.",
+    "epoca": "Democracia"
+  },
+  {
+    "year": 2011,
+    "event": "Fin de ETA",
+    "clue": "La banda terrorista anuncia el cese definitivo de su actividad armada.",
+    "epoca": "Democracia"
+  },
+  {
+    "year": 2014,
+    "event": "Felipe VI, rey",
+    "clue": "La abdicación de Juan Carlos I lleva al trono a su hijo.",
+    "epoca": "Democracia"
+  },
+  {
+    "year": 2020,
+    "event": "Pandemia de COVID-19",
+    "clue": "Un confinamiento y el estado de alarma paralizan el país ante el coronavirus.",
+    "epoca": "Democracia"
+  },
+  {
+    "year": 1147,
+    "event": "Conquista de Lisboa",
+    "clue": "Una flota de cruzados ayuda a Alfonso Enríquez a tomar la ciudad a los musulmanes.",
+    "epoca": "Reconquista"
+  },
+  {
+    "year": 1230,
+    "event": "Unión de León y Castilla",
+    "clue": "Fernando III une de forma definitiva las dos coronas vecinas.",
+    "epoca": "Reconquista"
+  },
+  {
+    "year": 1247,
+    "event": "Fueros de Aragón",
+    "clue": "Vidal de Canellas compila en Huesca el cuerpo legal del reino bajo Jaime I.",
+    "epoca": "Zaragoza y Aragón"
+  },
+  {
+    "year": 1282,
+    "event": "Vísperas Sicilianas",
+    "clue": "Una revuelta ofrece la corona de Sicilia a Pedro III de Aragón.",
+    "epoca": "Corona de Aragón"
+  },
+  {
+    "year": 1391,
+    "event": "Asalto a las juderías",
+    "clue": "Una ola de pogromos arrasa las aljamas judías de Sevilla, Córdoba y Valencia.",
+    "epoca": "Reconquista"
+  },
+  {
+    "year": 1442,
+    "event": "Conquista de Nápoles",
+    "clue": "Alfonso V el Magnánimo incorpora el reino italiano a la Corona de Aragón.",
+    "epoca": "Corona de Aragón"
+  },
+  {
+    "year": 1503,
+    "event": "El Gran Capitán en Ceriñola",
+    "clue": "Gonzalo Fernández de Córdoba vence a los franceses en Italia con tácticas revolucionarias.",
+    "epoca": "Edad Moderna"
+  },
+  {
+    "year": 1519,
+    "event": "Magallanes zarpa",
+    "clue": "Una expedición parte de Sevilla buscando una ruta a las especias por occidente.",
+    "epoca": "Edad Moderna"
+  },
+  {
+    "year": 1547,
+    "event": "Nace Cervantes",
+    "clue": "Nace en Alcalá de Henares el autor de la novela más célebre en castellano.",
+    "epoca": "Cultura"
+  },
+  {
+    "year": 1568,
+    "event": "Rebelión de las Alpujarras",
+    "clue": "Los moriscos granadinos se sublevan contra las medidas de Felipe II.",
+    "epoca": "Edad Moderna"
+  },
+  {
+    "year": 1580,
+    "event": "Unión ibérica",
+    "clue": "Felipe II hereda la corona portuguesa y reúne toda la península bajo un mismo rey.",
+    "epoca": "Edad Moderna"
+  },
+  {
+    "year": 1598,
+    "event": "Muerte de Felipe II",
+    "clue": "Fallece en El Escorial el monarca del mayor imperio de su tiempo.",
+    "epoca": "Edad Moderna"
+  },
+  {
+    "year": 1599,
+    "event": "Nace Velázquez",
+    "clue": "Nace en Sevilla quien sería el gran pintor de la corte de Felipe IV.",
+    "epoca": "Cultura"
+  },
+  {
+    "year": 1616,
+    "event": "Muerte de Cervantes",
+    "clue": "Muere en Madrid el manco de Lepanto, padre de la novela moderna.",
+    "epoca": "Cultura"
+  },
+  {
+    "year": 1665,
+    "event": "Carlos II, rey niño",
+    "clue": "Sube al trono un monarca enfermizo, último de la dinastía de los Austrias.",
+    "epoca": "Edad Moderna"
+  },
+  {
+    "year": 1668,
+    "event": "Independencia de Portugal",
+    "clue": "España reconoce por tratado la separación definitiva del reino vecino.",
+    "epoca": "Edad Moderna"
+  },
+  {
+    "year": 1808,
+    "event": "Motín de Aranjuez",
+    "clue": "Una revuelta fuerza la caída de Godoy y la abdicación de Carlos IV en su hijo.",
+    "epoca": "Guerra de la Independencia"
+  },
+  {
+    "year": 1823,
+    "event": "Los Cien Mil Hijos de San Luis",
+    "clue": "Un ejército francés invade España para restaurar el absolutismo de Fernando VII.",
+    "epoca": "Siglo XIX"
+  },
+  {
+    "year": 1828,
+    "event": "Muerte de Goya",
+    "clue": "El gran pintor aragonés fallece en su exilio de Burdeos.",
+    "epoca": "Cultura"
+  },
+  {
+    "year": 1885,
+    "event": "Muerte de Alfonso XII",
+    "clue": "El fallecimiento del rey abre la regencia de María Cristina.",
+    "epoca": "Siglo XIX"
+  },
+  {
+    "year": 1898,
+    "event": "Nace Lorca",
+    "clue": "Nace en Fuente Vaqueros el poeta y dramaturgo de la Generación del 27.",
+    "epoca": "Cultura"
+  },
+  {
+    "year": 1899,
+    "event": "Fundación del FC Barcelona",
+    "clue": "Joan Gamper impulsa la creación del club de fútbol catalán.",
+    "epoca": "Cultura"
+  },
+  {
+    "year": 1904,
+    "event": "Nobel para Echegaray",
+    "clue": "El dramaturgo y matemático logra el primer Nobel de Literatura para España.",
+    "epoca": "Cultura"
+  },
+  {
+    "year": 1912,
+    "event": "Magnicidio de Canalejas",
+    "clue": "Un anarquista asesina en Madrid al presidente del Gobierno liberal.",
+    "epoca": "Siglo XX"
+  },
+  {
+    "year": 1917,
+    "event": "Crisis de 1917",
+    "clue": "Una huelga general y la protesta militar y política sacuden la monarquía de Alfonso XIII.",
+    "epoca": "Siglo XX"
+  },
+  {
+    "year": 1922,
+    "event": "Nobel para Benavente",
+    "clue": "El dramaturgo madrileño obtiene el Nobel de Literatura.",
+    "epoca": "Cultura"
+  },
+  {
+    "year": 1925,
+    "event": "Desembarco de Alhucemas",
+    "clue": "Una operación hispano-francesa derrota a Abd el-Krim en la guerra del Rif.",
+    "epoca": "Siglo XX"
+  },
+  {
+    "year": 1926,
+    "event": "Muerte de Gaudí",
+    "clue": "El arquitecto del modernismo catalán muere atropellado por un tranvía.",
+    "epoca": "Cultura"
+  },
+  {
+    "year": 1930,
+    "event": "Caída de Primo de Rivera",
+    "clue": "El dictador dimite y se exilia, dejando muy debilitada a la monarquía.",
+    "epoca": "Siglo XX"
+  },
+  {
+    "year": 1937,
+    "event": "El Guernica de Picasso",
+    "clue": "El pintor malagueño crea para el pabellón español de París un mural contra la guerra.",
+    "epoca": "Cultura"
+  },
+  {
+    "year": 1947,
+    "event": "Ley de Sucesión",
+    "clue": "Un referéndum define España como un reino, con Franco como jefe del Estado vitalicio.",
+    "epoca": "Franquismo"
+  },
+  {
+    "year": 1956,
+    "event": "Nobel para Juan Ramón Jiménez",
+    "clue": "El poeta de 'Platero y yo' recibe el Nobel de Literatura.",
+    "epoca": "Cultura"
+  },
+  {
+    "year": 1962,
+    "event": "Contubernio de Múnich",
+    "clue": "Opositores al franquismo se reúnen en un congreso europeo, provocando represalias.",
+    "epoca": "Franquismo"
+  },
+  {
+    "year": 1970,
+    "event": "Proceso de Burgos",
+    "clue": "Un consejo de guerra contra miembros de ETA desata protestas dentro y fuera del país.",
+    "epoca": "Franquismo"
+  },
+  {
+    "year": 1975,
+    "event": "Marcha Verde",
+    "clue": "Una multitud marroquí avanza sobre el Sáhara español, forzando su abandono.",
+    "epoca": "Franquismo"
+  },
+  {
+    "year": 1977,
+    "event": "Nobel para Aleixandre",
+    "clue": "El poeta de la Generación del 27 recibe el Nobel de Literatura.",
+    "epoca": "Cultura"
+  },
+  {
+    "year": 1979,
+    "event": "Estatutos de autonomía",
+    "clue": "País Vasco y Cataluña aprueban en referéndum sus primeras leyes de autogobierno.",
+    "epoca": "Democracia"
+  },
+  {
+    "year": 1996,
+    "event": "Aznar, presidente",
+    "clue": "El Partido Popular gana por primera vez unas elecciones generales.",
+    "epoca": "Democracia"
+  },
+  {
+    "year": 2017,
+    "event": "Crisis de Cataluña",
+    "clue": "Un referéndum de independencia declarado ilegal desemboca en una grave crisis institucional.",
+    "epoca": "Democracia"
+  },
+  {
+    "year": 2021,
+    "event": "Volcán de La Palma",
+    "clue": "Una erupción mantiene en vilo a la isla canaria durante casi tres meses.",
+    "epoca": "Democracia"
+  }
 ]

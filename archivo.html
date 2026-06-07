@@ -4,732 +4,171 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Archivo Histórico de Wordle España | Hispandle</title>
-    <meta name="description" content="Consulta el archivo completo de eventos históricos de Wordle España. Todas las palabras desde noviembre 2025 hasta enero 2026. Juega días pasados.">
+    <meta name="description" content="Consulta el archivo completo de eventos históricos de Hispandle. Todos los acontecimientos de la historia de España y Zaragoza, agrupados por época.">
     <link rel="canonical" href="https://hispandle.es/archivo.html">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
-        .archivo-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .archivo-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
+        .archivo-container { max-width: 820px; margin: 0 auto; padding: clamp(24px,5vw,56px) clamp(16px,5vw,32px); }
+        .archivo-hero { margin-bottom: 40px; }
         .archivo-title {
-            font-size: 2.5rem;
-            color: var(--accent);
-            margin-bottom: 10px;
+            font-family: var(--display); font-weight: 400;
+            font-size: clamp(2.8rem, 10vw, 5rem); line-height: .92; margin: 12px 0 14px;
+            color: var(--ink); text-shadow: 4px 4px 0 var(--gold);
         }
-        .archivo-subtitle {
-            color: #aaa;
-            font-size: 1.1rem;
+        .archivo-lead { color: var(--ink-soft); max-width: 50ch; font-size: 1.05rem; margin: 0 0 22px; }
+        .archivo-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 8px; }
+        .archivo-chip {
+            font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+            color: var(--muted); border: 1.5px solid var(--line-strong); border-radius: var(--r-pill); padding: 7px 14px;
         }
-        .mes-section {
-            margin-bottom: 50px;
+        .epoca-section { margin-bottom: 44px; }
+        .epoca-title {
+            font-family: var(--display); font-weight: 400; font-size: 1.8rem;
+            color: var(--ink); margin: 0 0 4px; display: flex; align-items: baseline; gap: 12px;
         }
-        .mes-title {
-            font-size: 1.8rem;
-            color: var(--accent);
-            margin-bottom: 20px;
-            border-bottom: 2px solid var(--border);
-            padding-bottom: 10px;
-        }
+        .epoca-count { font-family: var(--body); font-size: .8rem; font-weight: 700; color: var(--gold-deep); letter-spacing: .08em; }
+        .epoca-rule { height: 3px; background: var(--ink); border: none; margin: 8px 0 22px; opacity: .85; }
+        .evento-grid { display: grid; gap: 14px; }
         .evento-item {
-            background: var(--card-bg);
-            border: 2px solid var(--border);
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 15px;
-            transition: all 0.3s;
+            background: var(--surface); border: 1.5px solid var(--line-strong); border-radius: var(--r-card);
+            padding: 20px 22px; box-shadow: 4px 4px 0 var(--shadow);
+            transition: transform .18s ease, box-shadow .18s ease;
         }
-        .evento-item:hover {
-            border-color: var(--accent);
-            transform: translateX(5px);
-        }
-        .evento-fecha {
-            font-size: 0.9rem;
-            color: var(--accent);
-            font-weight: bold;
-            margin-bottom: 8px;
-        }
-        .evento-nombre {
-            font-size: 1.3rem;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .evento-año {
-            font-size: 1.1rem;
-            color: #888;
-            margin-bottom: 10px;
-        }
-        .evento-descripcion {
-            color: #bbb;
-            line-height: 1.6;
-        }
-        .btn-volver {
-            display: inline-block;
-            padding: 15px 30px;
-            background: var(--accent);
-            color: black;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            margin: 20px 0;
-            transition: all 0.3s;
-        }
-        .btn-volver:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212, 158, 82, 0.5);
-        }
+        .evento-item:hover { transform: translate(-2px,-2px); box-shadow: 7px 7px 0 var(--shadow); }
+        .evento-top { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; margin-bottom: 8px; }
+        .evento-año { font-family: var(--display); font-size: 2rem; line-height: 1; color: var(--brick); }
+        .evento-nombre { font-family: var(--display); font-weight: 400; font-size: 1.25rem; color: var(--ink); text-align: right; }
+        .evento-descripcion { color: var(--ink-soft); line-height: 1.55; margin: 0; }
+        .archivo-loading { text-align: center; color: var(--muted); padding: 60px; font-style: italic; }
     </style>
 </head>
 <body>
-    <div class="archivo-container">
-        <div class="archivo-header">
-            <h1 class="archivo-title">📚 Archivo Histórico de Hispandle</h1>
-            <p class="archivo-subtitle">Todos los eventos de Wordle España desde noviembre 2025</p>
-            <a href="index.html" class="btn-volver">← Volver al Juego</a>
-        </div>
+    <div class="page-wrapper">
+        <header class="app-bar">
+            <a class="brand" href="index.html" aria-label="Hispandle, inicio">
+                <span class="brand-mark">H</span>
+                <span class="brand-text">
+                    <span class="brand-name">HISPANDLE</span>
+                    <span class="brand-sub">ADIVINA · LA · HISTORIA</span>
+                </span>
+            </a>
+            <nav class="app-nav">
+                <a href="index.html" class="pill pill-link">← Jugar</a>
+                <button id="theme-toggle" class="pill theme-toggle" onclick="toggleArchTheme()" aria-label="Cambiar tema">
+                    <span class="theme-icon">☀</span><span class="theme-label">CLARO</span>
+                </button>
+            </nav>
+        </header>
 
-        <div class="mes-section">
-            <h2 class="mes-title">📅 Diciembre 2025</h2>
-            
-            <article class="evento-item">
-                <div class="evento-fecha">06 de Diciembre de 2025</div>
-                <h3 class="evento-nombre">Conquista de Zaragoza</h3>
-                <div class="evento-año">Año: 1118</div>
-                <p class="evento-descripcion">Alfonso I el Batallador reconquista la ciudad musulmana de Saraqusta.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">07 de Diciembre de 2025</div>
-                <h3 class="evento-nombre">Fundación Romana</h3>
-                <div class="evento-año">Año: 218</div>
-                <p class="evento-descripcion">Los romanos fundan Caesaraugusta, la futura Zaragoza.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">08 de Diciembre de 2025</div>
-                <h3 class="evento-nombre">Toma de Granada</h3>
-                <div class="evento-año">Año: 1492</div>
-                <p class="evento-descripcion">Los Reyes Católicos completan la Reconquista tomando el último reino musulmán.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">09 de Diciembre de 2025</div>
-                <h3 class="evento-nombre">Invasión Musulmana</h3>
-                <div class="evento-año">Año: 711</div>
-                <p class="evento-descripcion">Los musulmanes cruzan el Estrecho de Gibraltar e inician la conquista de la península ibérica.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">10 de Diciembre de 2025</div>
-                <h3 class="evento-nombre">Guerra Civil Española</h3>
-                <div class="evento-año">Año: 1936</div>
-                <p class="evento-descripcion">Estalla el conflicto bélico más devastador de la historia contemporánea española.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">11 de Diciembre de 2025</div>
-                <h3 class="evento-nombre">Privilegio General</h3>
-                <div class="evento-año">Año: 1282</div>
-                <p class="evento-descripcion">Pedro III de Aragón otorga este documento clave para los fueros aragoneses.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">12 de Diciembre de 2025</div>
-                <h3 class="evento-nombre">Sitios de Zaragoza</h3>
-                <div class="evento-año">Año: 1808</div>
-                <p class="evento-descripcion">Los franceses comienzan el asedio de la ciudad durante la Guerra de Independencia.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">13 de Diciembre de 2025</div>
-                <h3 class="evento-nombre">Descubrimiento de América</h3>
-                <div class="evento-año">Año: 1492</div>
-                <p class="evento-descripcion">Cristóbal Colón llega al Nuevo Mundo cambiando la historia mundial.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">14 de Diciembre de 2025</div>
-                <h3 class="evento-nombre">Boda Real</h3>
-                <div class="evento-año">Año: 1469</div>
-                <p class="evento-descripcion">Se casan Isabel de Castilla y Fernando de Aragón en Valladolid.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">15 de Diciembre de 2025</div>
-                <h3 class="evento-nombre">Constitución Española</h3>
-                <div class="evento-año">Año: 1978</div>
-                <p class="evento-descripcion">Los españoles ratifican en referéndum la norma suprema del ordenamiento jurídico.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">16 de Diciembre de 2025</div>
-                <h3 class="evento-nombre">Batalla de Las Navas</h3>
-                <div class="evento-año">Año: 1212</div>
-                <p class="evento-descripcion">Victoria cristiana decisiva en la Reconquista contra los almohades.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">17 de Diciembre de 2025</div>
-                <h3 class="evento-nombre">Muerte de Franco</h3>
-                <div class="evento-año">Año: 1975</div>
-                <p class="evento-descripcion">Fallece el dictador que gobernó España durante casi 40 años.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">18 de Diciembre de 2025</div>
-                <h3 class="evento-nombre">Invasiones Bárbaras</h3>
-                <div class="evento-año">Año: 409</div>
-                <p class="evento-descripcion">Suevos, vándalos y alanos cruzan los Pirineos e invaden Hispania.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">19 de Diciembre de 2025</div>
-                <h3 class="evento-nombre">Batalla de Lepanto</h3>
-                <div class="evento-año">Año: 1571</div>
-                <p class="evento-descripcion">La Santa Liga derrota al Imperio Otomano en esta batalla naval.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">20 de Diciembre de 2025</div>
-                <h3 class="evento-nombre">Revuelta Comunera</h3>
-                <div class="evento-año">Año: 1520</div>
-                <p class="evento-descripcion">Las ciudades castellanas se rebelan contra Carlos I.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">21 de Diciembre de 2025</div>
-                <h3 class="evento-nombre">Batalla de Teruel</h3>
-                <div class="evento-año">Año: 1937</div>
-                <p class="evento-descripcion">Ofensiva republicana en plena Guerra Civil para tomar esta ciudad aragonesa.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">22 de Diciembre de 2025</div>
-                <h3 class="evento-nombre">Agustina de Aragón</h3>
-                <div class="evento-año">Año: 1808</div>
-                <p class="evento-descripcion">Agustina de Aragón defiende Zaragoza en los Sitios durante la invasión francesa.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">23 de Diciembre de 2025</div>
-                <h3 class="evento-nombre">Coronación de Isabel</h3>
-                <div class="evento-año">Año: 1474</div>
-                <p class="evento-descripcion">Isabel es proclamada reina de Castilla, inicio del reinado de los Reyes Católicos.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">24 de Diciembre de 2025</div>
-                <h3 class="evento-nombre">Desastre del 98</h3>
-                <div class="evento-año">Año: 1898</div>
-                <p class="evento-descripcion">España pierde sus últimas colonias: Cuba, Puerto Rico y Filipinas.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">25 de Diciembre de 2025</div>
-                <h3 class="evento-nombre">Nacimiento de Jesucristo</h3>
-                <div class="evento-año">Año: 25</div>
-                <p class="evento-descripcion">Fecha tradicional del nacimiento de Cristo, fundamental para la cultura occidental.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">26 de Diciembre de 2025</div>
-                <h3 class="evento-nombre">Anexión de Navarra</h3>
-                <div class="evento-año">Año: 1512</div>
-                <p class="evento-descripcion">Fernando el Católico incorpora el Reino de Navarra a la Corona de Castilla.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">27 de Diciembre de 2025</div>
-                <h3 class="evento-nombre">Reino de Aragón</h3>
-                <div class="evento-año">Año: 1065</div>
-                <p class="evento-descripcion">Ramiro I consolida el Reino de Aragón como entidad independiente.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">28 de Diciembre de 2025</div>
-                <h3 class="evento-nombre">Exposición Universal</h3>
-                <div class="evento-año">Año: 1929</div>
-                <p class="evento-descripcion">Barcelona acoge la Exposición Internacional, transformando la ciudad.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">29 de Diciembre de 2025</div>
-                <h3 class="evento-nombre">Dos de Mayo</h3>
-                <div class="evento-año">Año: 1808</div>
-                <p class="evento-descripcion">El pueblo de Madrid se levanta contra las tropas napoleónicas.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">30 de Diciembre de 2025</div>
-                <h3 class="evento-nombre">Golpe del 23-F</h3>
-                <div class="evento-año">Año: 1981</div>
-                <p class="evento-descripcion">Intento de golpe de estado en el Congreso de los Diputados.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">31 de Diciembre de 2025</div>
-                <h3 class="evento-nombre">Fin del Milenio</h3>
-                <div class="evento-año">Año: 1999</div>
-                <p class="evento-descripcion">España se prepara para recibir el nuevo milenio y el euro.</p>
-            </article>
-        </div>
-        
-        <div class="mes-section">
-            <h2 class="mes-title">📅 Enero 2026</h2>
-            
-            <article class="evento-item">
-                <div class="evento-fecha">01 de Enero de 2026</div>
-                <h3 class="evento-nombre">Llegada del Euro</h3>
-                <div class="evento-año">Año: 2002</div>
-                <p class="evento-descripcion">España adopta el euro como moneda física sustituyendo la peseta.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">02 de Enero de 2026</div>
-                <h3 class="evento-nombre">Fin de la Reconquista</h3>
-                <div class="evento-año">Año: 1492</div>
-                <p class="evento-descripcion">Finaliza la Reconquista con la toma del Reino Nazarí de Granada.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">03 de Enero de 2026</div>
-                <h3 class="evento-nombre">Toma de Gibraltar</h3>
-                <div class="evento-año">Año: 1704</div>
-                <p class="evento-descripcion">Inglaterra se apodera del Peñón durante la Guerra de Sucesión.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">04 de Enero de 2026</div>
-                <h3 class="evento-nombre">Decretos de Nueva Planta</h3>
-                <div class="evento-año">Año: 1716</div>
-                <p class="evento-descripcion">Felipe V suprime los fueros de la Corona de Aragón.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">05 de Enero de 2026</div>
-                <h3 class="evento-nombre">Edicto de Granada</h3>
-                <div class="evento-año">Año: 1492</div>
-                <p class="evento-descripcion">Los Reyes Católicos decretan la expulsión de los judíos de España.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">06 de Enero de 2026</div>
-                <h3 class="evento-nombre">Compromiso de Caspe</h3>
-                <div class="evento-año">Año: 1412</div>
-                <p class="evento-descripcion">Se elige a Fernando de Antequera como rey de la Corona de Aragón.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">07 de Enero de 2026</div>
-                <h3 class="evento-nombre">Segunda República</h3>
-                <div class="evento-año">Año: 1931</div>
-                <p class="evento-descripcion">Las Cortes aprueban la constitución de la Segunda República.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">08 de Enero de 2026</div>
-                <h3 class="evento-nombre">Fin Guerra Civil</h3>
-                <div class="evento-año">Año: 1939</div>
-                <p class="evento-descripcion">Las tropas franquistas toman Barcelona, próximo al fin de la guerra.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">09 de Enero de 2026</div>
-                <h3 class="evento-nombre">Primera República</h3>
-                <div class="evento-año">Año: 1873</div>
-                <p class="evento-descripcion">Se proclama la Primera República Española tras la abdicación de Amadeo I.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">10 de Enero de 2026</div>
-                <h3 class="evento-nombre">Carlos I Emperador</h3>
-                <div class="evento-año">Año: 1519</div>
-                <p class="evento-descripcion">Carlos I de España es coronado Emperador del Sacro Imperio.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">11 de Enero de 2026</div>
-                <h3 class="evento-nombre">Fin del Sitio</h3>
-                <div class="evento-año">Año: 1809</div>
-                <p class="evento-descripcion">Termina el segundo sitio de Zaragoza con la capitulación ante los franceses.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">12 de Enero de 2026</div>
-                <h3 class="evento-nombre">Expo Zaragoza</h3>
-                <div class="evento-año">Año: 2008</div>
-                <p class="evento-descripcion">Zaragoza acoge la Exposición Internacional sobre agua y desarrollo sostenible.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">13 de Enero de 2026</div>
-                <h3 class="evento-nombre">Batalla de Guadalete</h3>
-                <div class="evento-año">Año: 711</div>
-                <p class="evento-descripcion">Los musulmanes derrotan a Don Rodrigo, último rey visigodo.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">14 de Enero de 2026</div>
-                <h3 class="evento-nombre">Autonomía de Aragón</h3>
-                <div class="evento-año">Año: 1977</div>
-                <p class="evento-descripcion">Se inicia el proceso autonómico aragonés con la creación de la preautonomía.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">15 de Enero de 2026</div>
-                <h3 class="evento-nombre">Carlos I Rey</h3>
-                <div class="evento-año">Año: 1516</div>
-                <p class="evento-descripcion">Carlos de Habsburgo se convierte en rey de España.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">16 de Enero de 2026</div>
-                <h3 class="evento-nombre">Abdicación Carlos V</h3>
-                <div class="evento-año">Año: 1556</div>
-                <p class="evento-descripcion">Carlos V abdica y divide su imperio entre Felipe II y Fernando I.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">17 de Enero de 2026</div>
-                <h3 class="evento-nombre">Batalla de Almansa</h3>
-                <div class="evento-año">Año: 1706</div>
-                <p class="evento-descripcion">Victoria borbónica decisiva en la Guerra de Sucesión Española.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">18 de Enero de 2026</div>
-                <h3 class="evento-nombre">Gramática Castellana</h3>
-                <div class="evento-año">Año: 1492</div>
-                <p class="evento-descripcion">Nebrija publica la primera gramática de la lengua castellana.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">19 de Enero de 2026</div>
-                <h3 class="evento-nombre">Casino de Zaragoza</h3>
-                <div class="evento-año">Año: 1892</div>
-                <p class="evento-descripcion">Se inaugura el Casino Principal de Zaragoza en el Paseo de la Independencia.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">20 de Enero de 2026</div>
-                <h3 class="evento-nombre">Unión Dinástica</h3>
-                <div class="evento-año">Año: 1479</div>
-                <p class="evento-descripcion">Fernando II de Aragón hereda el trono, consolidando la unión con Castilla.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">21 de Enero de 2026</div>
-                <h3 class="evento-nombre">Guerra Rosellón</h3>
-                <div class="evento-año">Año: 1793</div>
-                <p class="evento-descripcion">España entra en guerra contra la Francia revolucionaria.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">22 de Enero de 2026</div>
-                <h3 class="evento-nombre">Restauración Borbónica</h3>
-                <div class="evento-año">Año: 1878</div>
-                <p class="evento-descripcion">Alfonso XII restaura la monarquía tras la Primera República.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">23 de Enero de 2026</div>
-                <h3 class="evento-nombre">Felipe II Rey</h3>
-                <div class="evento-año">Año: 1556</div>
-                <p class="evento-descripcion">Felipe II asume el trono de España iniciando su largo reinado.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">24 de Enero de 2026</div>
-                <h3 class="evento-nombre">Entrada en la CEE</h3>
-                <div class="evento-año">Año: 1986</div>
-                <p class="evento-descripcion">España se convierte en miembro de la Comunidad Económica Europea.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">25 de Enero de 2026</div>
-                <h3 class="evento-nombre">Tratado de Tordesillas</h3>
-                <div class="evento-año">Año: 1494</div>
-                <p class="evento-descripcion">España y Portugal se reparten el Nuevo Mundo.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">26 de Enero de 2026</div>
-                <h3 class="evento-nombre">Motín de Aranjuez</h3>
-                <div class="evento-año">Año: 1808</div>
-                <p class="evento-descripcion">Carlos IV abdica en favor de Fernando VII tras un motín popular.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">27 de Enero de 2026</div>
-                <h3 class="evento-nombre">Exilio Republicano</h3>
-                <div class="evento-año">Año: 1939</div>
-                <p class="evento-descripcion">Miles de españoles cruzan la frontera francesa huyendo del franquismo.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">28 de Enero de 2026</div>
-                <h3 class="evento-nombre">Muerte Fernando II</h3>
-                <div class="evento-año">Año: 1516</div>
-                <p class="evento-descripcion">Fallece Fernando el Católico, uno de los Reyes Católicos.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">29 de Enero de 2026</div>
-                <h3 class="evento-nombre">Fueros de Aragón</h3>
-                <div class="evento-año">Año: 1170</div>
-                <p class="evento-descripcion">Alfonso II otorga importantes fueros a las ciudades aragonesas.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">30 de Enero de 2026</div>
-                <h3 class="evento-nombre">Paz de Westfalia</h3>
-                <div class="evento-año">Año: 1648</div>
-                <p class="evento-descripcion">España reconoce la independencia de los Países Bajos.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">31 de Enero de 2026</div>
-                <h3 class="evento-nombre">Muerte Carlos II</h3>
-                <div class="evento-año">Año: 1700</div>
-                <p class="evento-descripcion">Muere Carlos II sin descendencia, iniciándose la Guerra de Sucesión.</p>
-            </article>
-        </div>
-        
-        <div class="mes-section">
-            <h2 class="mes-title">📅 Febrero 2026</h2>
-            
-            <article class="evento-item">
-                <div class="evento-fecha">01 de Febrero de 2026</div>
-                <h3 class="evento-nombre">Conquista de Granada</h3>
-                <div class="evento-año">Año: 1502</div>
-                <p class="evento-descripcion">Los Reyes Católicos ordenan la conversión forzosa de los musulmanes.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">02 de Febrero de 2026</div>
-                <h3 class="evento-nombre">III Concilio Toledo</h3>
-                <div class="evento-año">Año: 589</div>
-                <p class="evento-descripcion">El rey Recaredo convierte el reino visigodo al catolicismo.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">03 de Febrero de 2026</div>
-                <h3 class="evento-nombre">Cortes de Cádiz</h3>
-                <div class="evento-año">Año: 1810</div>
-                <p class="evento-descripcion">Se reúnen las Cortes Generales durante la ocupación francesa.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">04 de Febrero de 2026</div>
-                <h3 class="evento-nombre">Paz de Zanjón</h3>
-                <div class="evento-año">Año: 1878</div>
-                <p class="evento-descripcion">Finaliza la Guerra de los Diez Años en Cuba.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">05 de Febrero de 2026</div>
-                <h3 class="evento-nombre">Victoria de Armada</h3>
-                <div class="evento-año">Año: 1597</div>
-                <p class="evento-descripcion">España rechaza el ataque inglés a Cádiz.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">06 de Febrero de 2026</div>
-                <h3 class="evento-nombre">División Azul</h3>
-                <div class="evento-año">Año: 1945</div>
-                <p class="evento-descripcion">Regresa de Rusia la última unidad española que luchó en la Segunda Guerra Mundial.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">07 de Febrero de 2026</div>
-                <h3 class="evento-nombre">Conquista de Valencia</h3>
-                <div class="evento-año">Año: 1238</div>
-                <p class="evento-descripcion">Jaime I el Conquistador toma la ciudad de Valencia.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">08 de Febrero de 2026</div>
-                <h3 class="evento-nombre">Constitución de Cádiz</h3>
-                <div class="evento-año">Año: 1812</div>
-                <p class="evento-descripcion">Se promulga La Pepa, primera constitución española.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">09 de Febrero de 2026</div>
-                <h3 class="evento-nombre">Guerra con Chile</h3>
-                <div class="evento-año">Año: 1865</div>
-                <p class="evento-descripcion">España entra en guerra con Chile y Perú por el Pacífico.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">10 de Febrero de 2026</div>
-                <h3 class="evento-nombre">Batalla del Rosellón</h3>
-                <div class="evento-año">Año: 1794</div>
-                <p class="evento-descripcion">España reconquista territorios catalanes perdidos ante Francia.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">11 de Febrero de 2026</div>
-                <h3 class="evento-nombre">Abdicación de Amadeo</h3>
-                <div class="evento-año">Año: 1873</div>
-                <p class="evento-descripcion">Amadeo I abdica, dando paso a la Primera República.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">12 de Febrero de 2026</div>
-                <h3 class="evento-nombre">Orden Caballeros</h3>
-                <div class="evento-año">Año: 1429</div>
-                <p class="evento-descripcion">Alfonso V de Aragón crea la Orden del Toisón de Oro.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">13 de Febrero de 2026</div>
-                <h3 class="evento-nombre">Conquista de Canarias</h3>
-                <div class="evento-año">Año: 1502</div>
-                <p class="evento-descripcion">España completa la conquista del archipiélago canario.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">14 de Febrero de 2026</div>
-                <h3 class="evento-nombre">Bayona</h3>
-                <div class="evento-año">Año: 1808</div>
-                <p class="evento-descripcion">Fernando VII es obligado a abdicar en favor de José Bonaparte.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">15 de Febrero de 2026</div>
-                <h3 class="evento-nombre">Maine Explosión</h3>
-                <div class="evento-año">Año: 1898</div>
-                <p class="evento-descripcion">El hundimiento del Maine precipita la guerra con Estados Unidos.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">16 de Febrero de 2026</div>
-                <h3 class="evento-nombre">Aislamiento Franquista</h3>
-                <div class="evento-año">Año: 1946</div>
-                <p class="evento-descripcion">La ONU condena al régimen franquista y recomienda retirar embajadores.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">17 de Febrero de 2026</div>
-                <h3 class="evento-nombre">Asesinato Canalejas</h3>
-                <div class="evento-año">Año: 1913</div>
-                <p class="evento-descripcion">El presidente del gobierno es asesinado por un anarquista.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">18 de Febrero de 2026</div>
-                <h3 class="evento-nombre">Frente Popular</h3>
-                <div class="evento-año">Año: 1936</div>
-                <p class="evento-descripcion">El Frente Popular gana las elecciones en España.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">19 de Febrero de 2026</div>
-                <h3 class="evento-nombre">Reconquista de Córdoba</h3>
-                <div class="evento-año">Año: 1237</div>
-                <p class="evento-descripcion">Fernando III de Castilla reconquista la ciudad de Córdoba.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">20 de Febrero de 2026</div>
-                <h3 class="evento-nombre">Revuelta Germanías</h3>
-                <div class="evento-año">Año: 1524</div>
-                <p class="evento-descripcion">Se sofoca la rebelión de las Germanías en Valencia.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">21 de Febrero de 2026</div>
-                <h3 class="evento-nombre">Intento de Golpe</h3>
-                <div class="evento-año">Año: 1981</div>
-                <p class="evento-descripcion">El teniente coronel Tejero irrumpe en el Congreso.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">22 de Febrero de 2026</div>
-                <h3 class="evento-nombre">Leyes de Burgos</h3>
-                <div class="evento-año">Año: 1512</div>
-                <p class="evento-descripcion">Primera legislación española para proteger a los indígenas americanos.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">23 de Febrero de 2026</div>
-                <h3 class="evento-nombre">23-F</h3>
-                <div class="evento-año">Año: 1981</div>
-                <p class="evento-descripcion">El Rey Juan Carlos I frustra el golpe de estado en un mensaje televisado.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">24 de Febrero de 2026</div>
-                <h3 class="evento-nombre">Batalla de Pavía</h3>
-                <div class="evento-año">Año: 1525</div>
-                <p class="evento-descripcion">Carlos I derrota y captura a Francisco I de Francia.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">25 de Febrero de 2026</div>
-                <h3 class="evento-nombre">Reconquista de Sevilla</h3>
-                <div class="evento-año">Año: 1248</div>
-                <p class="evento-descripcion">Fernando III conquista Sevilla tras 16 meses de asedio.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">26 de Febrero de 2026</div>
-                <h3 class="evento-nombre">Regreso de Fernando VII</h3>
-                <div class="evento-año">Año: 1815</div>
-                <p class="evento-descripcion">Fernando VII regresa a España tras la derrota de Napoleón.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">27 de Febrero de 2026</div>
-                <h3 class="evento-nombre">Reconocimiento Franco</h3>
-                <div class="evento-año">Año: 1939</div>
-                <p class="evento-descripcion">Francia y Reino Unido reconocen el gobierno de Franco.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">28 de Febrero de 2026</div>
-                <h3 class="evento-nombre">Estatuto de Cataluña</h3>
-                <div class="evento-año">Año: 1980</div>
-                <p class="evento-descripcion">Se aprueba el Estatuto de Autonomía de Cataluña.</p>
-            </article>
-        </div>
-        
-        <div class="mes-section">
-            <h2 class="mes-title">📅 Marzo 2026</h2>
-            
-            <article class="evento-item">
-                <div class="evento-fecha">01 de Marzo de 2026</div>
-                <h3 class="evento-nombre">Batalla de Toro</h3>
-                <div class="evento-año">Año: 1476</div>
-                <p class="evento-descripcion">Isabel y Fernando consolidan su poder en Castilla.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">02 de Marzo de 2026</div>
-                <h3 class="evento-nombre">Proclamación República</h3>
-                <div class="evento-año">Año: 1931</div>
-                <p class="evento-descripcion">Se proclama la Segunda República tras la victoria electoral republicana.</p>
-            </article>
-        
-            <article class="evento-item">
-                <div class="evento-fecha">03 de Marzo de 2026</div>
-                <h3 class="evento-nombre">Crisis de la Corona</h3>
-                <div class="evento-año">Año: 1808</div>
-                <p class="evento-descripcion">Carlos IV y Fernando VII son forzados a abdicar en Napoleón.</p>
-            </article>
-        </div>
+        <main class="archivo-container">
+            <div class="archivo-hero">
+                <p class="eyebrow">ARCHIVO COMPLETO · ESPAÑA &amp; ZARAGOZA</p>
+                <h1 class="archivo-title">El archivo<br>de la historia</h1>
+                <p class="archivo-lead">Todos los acontecimientos que pueden aparecer en el reto diario, ordenados por época. Desde la Hispania romana hasta la España de hoy.</p>
+                <div class="archivo-meta" id="archivo-meta"></div>
+            </div>
+
+            <div id="archivo-content">
+                <p class="archivo-loading">Cargando el archivo histórico…</p>
+            </div>
+
+            <a href="index.html" class="btn-brick btn-large" style="margin-top:24px;text-decoration:none;text-align:center;">← VOLVER AL JUEGO</a>
+        </main>
 
         <footer class="site-footer">
-            <p class="footer-text">🏛️ Desarrollado en Zaragoza, Aragón</p>
-            <p class="footer-subtext">El primer archivo completo de Wordle histórico en español</p>
-            <a href="index.html" class="btn-volver">← Volver al Juego</a>
+            <div class="footer-top">
+                <span class="footer-brand">HISPANDLE</span>
+                <span class="footer-tag">EL ARCHIVO DE WORDLE HISTÓRICO EN ESPAÑOL</span>
+            </div>
+            <p class="footer-copyright">© 2025 Hispandle · Creado por <a href="https://www.linkedin.com/in/carlos-solana-melero-153b39262/" target="_blank" rel="noopener">Carlos Solana</a></p>
         </footer>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script>
+    // Tema (independiente, comparte clave con el juego)
+    function paintArchToggle(theme) {
+        document.querySelector('.theme-icon').textContent = theme === 'dark' ? '☾' : '☀';
+        document.querySelector('.theme-label').textContent = theme === 'dark' ? 'OSCURO' : 'CLARO';
+    }
+    function toggleArchTheme() {
+        const html = document.documentElement;
+        const next = html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('theme', next);
+        paintArchToggle(next);
+    }
+    (function initTheme() {
+        const saved = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', saved);
+        document.addEventListener('DOMContentLoaded', () => paintArchToggle(saved));
+    })();
+
+    // Orden cronológico de épocas
+    const ORDEN = [
+        'Antigua', 'Visigoda', 'Al-Ándalus', 'Reconquista', 'Corona de Aragón',
+        'Reyes Católicos', 'Edad Moderna', 'Borbones', 'Siglo XIX',
+        'Guerra de la Independencia', 'Siglo XX', 'Guerra Civil', 'Franquismo',
+        'Transición', 'Democracia', 'Zaragoza y Aragón', 'Cultura'
+    ];
+
+    async function loadArchivo() {
+        const content = document.getElementById('archivo-content');
+        try {
+            const res = await fetch('eventos.json', { cache: 'no-cache' });
+            const eventos = await res.json();
+
+            // Agrupar por época
+            const grupos = {};
+            eventos.forEach(e => {
+                const k = e.epoca || 'Otros';
+                (grupos[k] = grupos[k] || []).push(e);
+            });
+
+            // Meta chips
+            const meta = document.getElementById('archivo-meta');
+            meta.innerHTML =
+                `<span class="archivo-chip">${eventos.length} eventos</span>` +
+                `<span class="archivo-chip">${Object.keys(grupos).length} épocas</span>`;
+
+            // Render por orden cronológico
+            const claves = Object.keys(grupos).sort((a, b) => {
+                const ia = ORDEN.indexOf(a), ib = ORDEN.indexOf(b);
+                return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
+            });
+
+            content.innerHTML = claves.map(k => {
+                const items = grupos[k].slice().sort((a, b) => a.year - b.year);
+                const cards = items.map(e => `
+                    <article class="evento-item">
+                        <div class="evento-top">
+                            <span class="evento-año">${e.year}</span>
+                            <span class="evento-nombre">${e.event}</span>
+                        </div>
+                        <p class="evento-descripcion">${e.clue}</p>
+                    </article>`).join('');
+                return `
+                    <section class="epoca-section">
+                        <h2 class="epoca-title">${k} <span class="epoca-count">${items.length}</span></h2>
+                        <hr class="epoca-rule">
+                        <div class="evento-grid">${cards}</div>
+                    </section>`;
+            }).join('');
+
+            const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (window.gsap && !reduced) {
+                gsap.from('.epoca-section', { y: 20, opacity: 0, duration: .5, stagger: .08, ease: 'power2.out' });
+            }
+        } catch (err) {
+            content.innerHTML = '<p class="archivo-loading">No se pudo cargar el archivo. Recarga la página.</p>';
+            console.error(err);
+        }
+    }
+    loadArchivo();
+    </script>
 </body>
 </html>

@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1A0F0A"/>
+      <stop offset="100%" stop-color="#2E1A0E"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Fondo oscuro tierra -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Líneas decorativas laterales -->
+  <rect x="0" y="0" width="8" height="630" fill="#C8A24A" opacity="0.9"/>
+  <rect x="1192" y="0" width="8" height="630" fill="#C8A24A" opacity="0.9"/>
+  <rect x="0" y="0" width="1200" height="8" fill="#C8A24A" opacity="0.9"/>
+  <rect x="0" y="622" width="1200" height="8" fill="#C8A24A" opacity="0.9"/>
+
+  <!-- Marco interior sutil -->
+  <rect x="28" y="28" width="1144" height="574" fill="none" stroke="#C8A24A" stroke-width="1.5" opacity="0.35"/>
+
+  <!-- Icono H grande izquierda -->
+  <g opacity="0.12">
+    <rect x="80" y="130" width="70" height="370" rx="8" fill="#C8A24A"/>
+    <rect x="340" y="130" width="70" height="370" rx="8" fill="#C8A24A"/>
+    <rect x="80" y="275" width="330" height="80" rx="8" fill="#C8A24A"/>
+  </g>
+
+  <!-- Pastilla JUEGO DIARIO -->
+  <rect x="490" y="165" width="220" height="38" rx="19" fill="#D24B30" opacity="0.95"/>
+  <text x="600" y="190" font-family="Arial, sans-serif" font-size="16" font-weight="700" fill="#F1E9D2" text-anchor="middle" letter-spacing="3">JUEGO DIARIO</text>
+
+  <!-- HISPANDLE - título principal -->
+  <text x="600" y="335" font-family="Georgia, serif" font-size="128" font-weight="700" fill="#F1E9D2" text-anchor="middle" letter-spacing="-2">HISPANDLE</text>
+
+  <!-- Línea dorada divisora -->
+  <line x1="400" y1="370" x2="800" y2="370" stroke="#C8A24A" stroke-width="2.5"/>
+  <!-- Rombo central -->
+  <polygon points="600,358 611,369 600,380 589,369" fill="#C8A24A"/>
+
+  <!-- Subtítulo -->
+  <text x="600" y="428" font-family="Georgia, serif" font-size="28" fill="#C8A24A" text-anchor="middle" letter-spacing="1">Adivina el año de la Historia de España</text>
+
+  <!-- URL -->
+  <text x="600" y="490" font-family="Arial, sans-serif" font-size="20" fill="#F1E9D2" text-anchor="middle" opacity="0.5" letter-spacing="2">hispandle.es</text>
+
+  <!-- Puntos decorativos tipo dado -->
+  <circle cx="490" cy="490" r="5" fill="#C8A24A" opacity="0.5"/>
+  <circle cx="710" cy="490" r="5" fill="#C8A24A" opacity="0.5"/>
+</svg>

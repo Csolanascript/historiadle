@@ -24,6 +24,24 @@ const HAS_GSAP = typeof window.gsap !== 'undefined';
 const REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const ANIM = HAS_GSAP && !REDUCED;
 
+// ============ ICONOS SVG INLINE ============
+const SVG = (paths) => `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths}</svg>`;
+const ICONS = {
+    sun: SVG('<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>'),
+    moon: SVG('<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>'),
+    check: SVG('<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>'),
+    up: SVG('<line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/>'),
+    down: SVG('<line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/>'),
+    flame: SVG('<path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>'),
+    far: SVG('<circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>'),
+    trophy: SVG('<path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>'),
+    tick: SVG('<polyline points="20 6 9 17 4 12"/>'),
+    cross: SVG('<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>'),
+    target: SVG('<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>'),
+    circle: SVG('<circle cx="12" cy="12" r="10"/>'),
+    landmark: SVG('<line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12 2 20 7 4 7"/>')
+};
+
 // ============ SELECCIÓN DETERMINISTA DEL EVENTO DEL DÍA ============
 // Cada fecha mapea siempre a un evento del pool → el juego nunca se queda sin reto.
 const EPOCH = Date.UTC(2025, 0, 1); // 2025-01-01
@@ -182,11 +200,11 @@ function renderAttempt(guess, diff) {
     let feedback = '';
     if (diff === 0) {
         div.classList.add('correct');
-        feedback = '🎉 ¡Correcto!';
+        feedback = `${ICONS.check} ¡Correcto!`;
     } else {
-        const dir = diff > 0 ? '⬆️ Más tarde' : '⬇️ Más pronto';
-        if (Math.abs(diff) <= 50) { div.classList.add('close'); feedback = `🔥 Cerca · ${dir}`; }
-        else { div.classList.add('wrong'); feedback = `❌ Lejos · ${dir}`; }
+        const dir = diff > 0 ? `${ICONS.up} Más tarde` : `${ICONS.down} Más pronto`;
+        if (Math.abs(diff) <= 50) { div.classList.add('close'); feedback = `${ICONS.flame} Cerca · ${dir}`; }
+        else { div.classList.add('wrong'); feedback = `${ICONS.far} Lejos · ${dir}`; }
     }
 
     div.innerHTML = `<span class="att-year">${guess}</span><span class="att-feedback">${feedback}</span>`;
@@ -228,9 +246,9 @@ function showGameResult(win) {
     msg.classList.remove('hidden', 'win', 'lose');
     msg.classList.add(win ? 'win' : 'lose');
 
-    text.innerText = win
-        ? `🎉 ¡Correcto!\n${targetEvent.year} · ${targetEvent.event}`
-        : `La respuesta era:\n${targetEvent.year} · ${targetEvent.event}`;
+    text.innerHTML = win
+        ? `${ICONS.trophy} ¡Correcto!<br>${targetEvent.year} · ${targetEvent.event}`
+        : `La respuesta era:<br>${targetEvent.year} · ${targetEvent.event}`;
 
     if (ANIM) {
         gsap.fromTo(msg, { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: .45, ease: 'power2.out' });
@@ -310,9 +328,9 @@ function renderHistory() {
         const dateLabel = dateObj.toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' });
 
         let badge;
-        if (saved && saved.gameOver) badge = `<span class="history-badge ${won ? 'badge-win' : 'badge-lose'}">${won ? '✓ Acertado' : '✗ Fallado'}</span>`;
-        else if (isToday) badge = '<span class="history-badge badge-today">🎯 Hoy</span>';
-        else badge = '<span class="history-badge badge-unplayed">○ Sin jugar</span>';
+        if (saved && saved.gameOver) badge = `<span class="history-badge ${won ? 'badge-win' : 'badge-lose'}">${won ? ICONS.tick + ' Acertado' : ICONS.cross + ' Fallado'}</span>`;
+        else if (isToday) badge = `<span class="history-badge badge-today">${ICONS.target} Hoy</span>`;
+        else badge = `<span class="history-badge badge-unplayed">${ICONS.circle} Sin jugar</span>`;
 
         const revealed = saved && saved.gameOver;
         const eventName = revealed ? event.event : '? ? ?';
@@ -324,7 +342,7 @@ function renderHistory() {
             </div>
             <div class="history-event ${revealed ? '' : 'hidden-event'}">${eventName}</div>
             <div class="history-details">
-                <span class="history-year">🏛️ ${event.epoca || 'Historia'}</span>
+                <span class="history-year">${ICONS.landmark} ${event.epoca || 'Historia'}</span>
                 <span class="history-click">Jugar →</span>
             </div>`;
 
@@ -348,7 +366,7 @@ function toggleTheme() {
 function paintThemeToggle(theme) {
     const icon = document.querySelector('.theme-icon');
     const label = document.querySelector('.theme-label');
-    if (icon) icon.textContent = theme === 'dark' ? '☾' : '☀';
+    if (icon) icon.innerHTML = theme === 'dark' ? ICONS.moon : ICONS.sun;
     if (label) label.textContent = theme === 'dark' ? 'OSCURO' : 'CLARO';
 }
 function loadTheme() {

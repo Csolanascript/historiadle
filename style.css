@@ -173,10 +173,13 @@ button:disabled { opacity: .45; cursor: not-allowed; box-shadow: none !important
 /* Iconos SVG inline */
 .icon {
     width: 1em; height: 1em;
+    max-width: 1.5em; max-height: 1.5em;
     display: inline-block;
     vertical-align: -0.14em;
     flex: none;
+    overflow: hidden;
     stroke: currentColor;
+    fill: none;
 }
 .dice { display: inline-flex; }
 .dice .icon { width: 1.25rem; height: 1.25rem; }
